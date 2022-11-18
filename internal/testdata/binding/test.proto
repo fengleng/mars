@@ -4,7 +4,7 @@ package binding;
 
 import "google/protobuf/field_mask.proto";
 
-option go_package = "github.com/go-kratos/kratos/transport/binding";
+option go_package = "github.com/fengleng/mars/transport/binding";
 
 // The request message containing the user's name.
 message HelloRequest {

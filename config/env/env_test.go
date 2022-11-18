@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/go-kratos/kratos/v2/config"
-	"github.com/go-kratos/kratos/v2/config/file"
+	"github.com/fengleng/mars/config"
+	"github.com/fengleng/mars/config/file"
 )
 
 const _testJSON = `

@@ -3,13 +3,13 @@ package tracing
 import (
 	"context"
 
-	"github.com/go-kratos/kratos/v2/log"
+	"github.com/fengleng/mars/log"
 
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/go-kratos/kratos/v2/middleware"
-	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/fengleng/mars/middleware"
+	"github.com/fengleng/mars/transport"
 )
 
 // Option is tracing option.

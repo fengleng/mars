@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/go-kratos/kratos/v2/metadata"
-	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/fengleng/mars/metadata"
+	"github.com/fengleng/mars/transport"
 )
 
 type headerCarrier http.Header

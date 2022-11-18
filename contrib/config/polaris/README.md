@@ -5,7 +5,7 @@ import (
  "log"
 
  "github.com/polarismesh/polaris-go"
- "github.com/go-kratos/kratos/contrib/config/polaris/v2"
+ "github.com/fengleng/mars/contrib/config/polaris"
 )
 
 func main() {

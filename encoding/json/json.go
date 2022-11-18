@@ -7,7 +7,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/fengleng/mars/encoding"
 )
 
 // Name is the name registered for the json codec.

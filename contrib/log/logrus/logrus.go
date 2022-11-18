@@ -3,7 +3,7 @@ package logrus
 import (
 	"github.com/sirupsen/logrus"
 
-	"github.com/go-kratos/kratos/v2/log"
+	"github.com/fengleng/mars/log"
 )
 
 var _ log.Logger = (*Logger)(nil)

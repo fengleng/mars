@@ -3,7 +3,7 @@ package eureka
 import (
 	"context"
 
-	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/fengleng/mars/registry"
 )
 
 var _ registry.Watcher = (*watcher)(nil)

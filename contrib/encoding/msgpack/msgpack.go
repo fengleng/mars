@@ -3,7 +3,7 @@ package msgpack
 import (
 	"github.com/vmihailenco/msgpack/v5"
 
-	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/fengleng/mars/encoding"
 )
 
 // Name is the name registered for the msgpack compressor.

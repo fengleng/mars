@@ -7,7 +7,7 @@ import (
 
 	"github.com/nacos-group/nacos-sdk-go/vo"
 
-	"github.com/go-kratos/kratos/v2/config"
+	"github.com/fengleng/mars/config"
 )
 
 type Watcher struct {

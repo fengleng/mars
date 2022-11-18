@@ -1,4 +1,4 @@
-module github.com/go-kratos/kratos/v2
+module github.com/fengleng/mars
 
 go 1.16
 

@@ -8,7 +8,7 @@ import (
 
 	"github.com/hashicorp/consul/api"
 
-	"github.com/go-kratos/kratos/v2/config"
+	"github.com/fengleng/mars/config"
 )
 
 // Option is etcd config option.

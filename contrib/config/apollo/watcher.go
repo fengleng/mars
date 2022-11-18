@@ -4,10 +4,10 @@ import (
 	"context"
 	"strings"
 
-	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/fengleng/mars/encoding"
 
-	"github.com/go-kratos/kratos/v2/config"
-	"github.com/go-kratos/kratos/v2/log"
+	"github.com/fengleng/mars/config"
+	"github.com/fengleng/mars/log"
 
 	"github.com/apolloconfig/agollo/v4/storage"
 )

@@ -9,7 +9,7 @@ import (
 	"github.com/aliyun/aliyun-log-go-sdk/producer"
 	"google.golang.org/protobuf/proto"
 
-	log "github.com/go-kratos/kratos/v2/log"
+	log "github.com/fengleng/mars/log"
 )
 
 // Logger see more detail https://github.com/aliyun/aliyun-log-go-sdk

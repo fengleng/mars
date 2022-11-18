@@ -4,8 +4,8 @@
 import (
 	"log"
 
-	cfg "github.com/go-kratos/kratos/contrib/config/etcd/v2"
-	"github.com/go-kratos/kratos/v2/config"
+	cfg "github.com/fengleng/mars/contrib/config/etcd"
+	"github.com/fengleng/mars/config"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"google.golang.org/grpc"
 )

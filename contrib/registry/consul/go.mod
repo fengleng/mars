@@ -1,10 +1,10 @@
-module github.com/go-kratos/kratos/contrib/registry/consul/v2
+module github.com/fengleng/mars/contrib/registry/consul
 
 go 1.16
 
 require (
-	github.com/go-kratos/kratos/v2 v2.5.0
+	github.com/fengleng/mars v0.0.0-00010101000000-000000000000
 	github.com/hashicorp/consul/api v1.14.0
 )
 
-replace github.com/go-kratos/kratos/v2 => ../../../
+replace github.com/fengleng/mars => ../../../

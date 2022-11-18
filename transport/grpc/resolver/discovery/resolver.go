@@ -6,9 +6,9 @@ import (
 	"errors"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/internal/endpoint"
-	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/fengleng/mars/internal/endpoint"
+	"github.com/fengleng/mars/log"
+	"github.com/fengleng/mars/registry"
 
 	"google.golang.org/grpc/attributes"
 	"google.golang.org/grpc/resolver"

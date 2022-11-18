@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/fengleng/mars/transport"
 )
 
 var _ Transporter = (*Transport)(nil)

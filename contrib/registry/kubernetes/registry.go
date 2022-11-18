@@ -21,7 +21,7 @@ import (
 	listerv1 "k8s.io/client-go/listers/core/v1"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/fengleng/mars/registry"
 )
 
 // Defines the key name of specific fields

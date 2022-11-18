@@ -8,11 +8,11 @@ import (
 	"time"
 
 	// init encoding
-	_ "github.com/go-kratos/kratos/v2/encoding/json"
-	_ "github.com/go-kratos/kratos/v2/encoding/proto"
-	_ "github.com/go-kratos/kratos/v2/encoding/xml"
-	_ "github.com/go-kratos/kratos/v2/encoding/yaml"
-	"github.com/go-kratos/kratos/v2/log"
+	_ "github.com/fengleng/mars/encoding/json"
+	_ "github.com/fengleng/mars/encoding/proto"
+	_ "github.com/fengleng/mars/encoding/xml"
+	_ "github.com/fengleng/mars/encoding/yaml"
+	"github.com/fengleng/mars/log"
 )
 
 var (

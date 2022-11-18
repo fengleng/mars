@@ -12,9 +12,9 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	"google.golang.org/grpc/peer"
 
-	"github.com/go-kratos/kratos/v2/internal/testdata/binding"
-	"github.com/go-kratos/kratos/v2/metadata"
-	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/fengleng/mars/internal/testdata/binding"
+	"github.com/fengleng/mars/metadata"
+	"github.com/fengleng/mars/transport"
 )
 
 func Test_parseFullMethod(t *testing.T) {

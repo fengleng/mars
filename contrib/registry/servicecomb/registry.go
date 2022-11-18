@@ -10,8 +10,8 @@ import (
 	"github.com/go-chassis/cari/pkg/errsvc"
 	"github.com/go-chassis/sc-client"
 
-	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/fengleng/mars/log"
+	"github.com/fengleng/mars/registry"
 	"github.com/gofrs/uuid"
 )
 

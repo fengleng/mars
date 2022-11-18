@@ -3,15 +3,15 @@ package apollo
 import (
 	"strings"
 
-	"github.com/go-kratos/kratos/v2/config"
-	"github.com/go-kratos/kratos/v2/log"
+	"github.com/fengleng/mars/config"
+	"github.com/fengleng/mars/log"
 
 	"github.com/apolloconfig/agollo/v4"
 	"github.com/apolloconfig/agollo/v4/constant"
 	apolloConfig "github.com/apolloconfig/agollo/v4/env/config"
 	"github.com/apolloconfig/agollo/v4/extension"
 
-	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/fengleng/mars/encoding"
 )
 
 type apollo struct {

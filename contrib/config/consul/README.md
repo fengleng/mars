@@ -2,7 +2,7 @@
 
 ```go
 import (
-    "github.com/go-kratos/kratos/contrib/config/consul/v2"
+    "github.com/fengleng/mars/contrib/config/consul"
     "github.com/hashicorp/consul/api"
 )
 func main() {

@@ -8,8 +8,8 @@ func TestParseGithubURL(t *testing.T) {
 		owner string
 		repo  string
 	}{
-		{"https://github.com/go-kratos/kratos.git", "go-kratos", "kratos"},
-		{"https://github.com/go-kratos/kratos", "go-kratos", "kratos"},
+		{"https://github.com/fengleng/mars.git", "go-kratos", "kratos"},
+		{"https://github.com/fengleng/mars", "go-kratos", "kratos"},
 		{"git@github.com:go-kratos/kratos.git", "go-kratos", "kratos"},
 		{"https://github.com/go-kratos/go-kratos.dev.git", "go-kratos", "go-kratos.dev"},
 	}

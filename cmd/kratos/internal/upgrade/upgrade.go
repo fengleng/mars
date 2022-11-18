@@ -3,7 +3,7 @@ package upgrade
 import (
 	"fmt"
 
-	"github.com/go-kratos/kratos/cmd/kratos/v2/internal/base"
+	"github.com/fengleng/mars/cmd/kratos/internal/base"
 
 	"github.com/spf13/cobra"
 )
@@ -19,9 +19,9 @@ var CmdUpgrade = &cobra.Command{
 // Run upgrade the kratos tools.
 func Run(cmd *cobra.Command, args []string) {
 	err := base.GoInstall(
-		"github.com/go-kratos/kratos/cmd/kratos/v2@latest",
-		"github.com/go-kratos/kratos/cmd/protoc-gen-go-http/v2@latest",
-		"github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2@latest",
+		"github.com/fengleng/mars/cmd/kratos@latest",
+		"github.com/fengleng/mars/cmd/protoc-gen-go-http@latest",
+		"github.com/fengleng/mars/cmd/protoc-gen-go-errors@latest",
 		"google.golang.org/protobuf/cmd/protoc-gen-go@latest",
 		"google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
 		"github.com/google/gnostic/cmd/protoc-gen-openapi@latest",

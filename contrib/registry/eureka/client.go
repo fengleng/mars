@@ -137,7 +137,7 @@ func NewClient(urls []string, opts ...ClientOption) *Client {
 	e := &Client{
 		ctx:               context.Background(),
 		urls:              urls,
-		eurekaPath:        "eureka/v2",
+		eurekaPath:        "eureka",
 		maxRetry:          len(urls),
 		heartbeatInterval: time.Second * heartbeatTime,
 		client:            &http.Client{Transport: tr, Timeout: time.Second * httpTimeout},

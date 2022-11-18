@@ -7,7 +7,7 @@ import (
 
 	"github.com/fsnotify/fsnotify"
 
-	"github.com/go-kratos/kratos/v2/config"
+	"github.com/fengleng/mars/config"
 )
 
 type watcher struct {

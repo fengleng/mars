@@ -2,10 +2,10 @@
 
 ## prometheus
 ```
-go get -u github.com/go-kratos/kratos/contrib/metrics/prometheus/v2
+go get -u github.com/fengleng/mars/contrib/metrics/prometheus
 ```
 
 ## datadog
 ```
-go get -u github.com/go-kratos/kratos/contrib/metrics/datadog/v2
+go get -u github.com/fengleng/mars/contrib/metrics/datadog
 ```

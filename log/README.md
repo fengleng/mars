@@ -40,22 +40,22 @@ log.Error("warn log")
 ### zap
 
 ```shell
-go get -u github.com/go-kratos/kratos/contrib/log/zap/v2
+go get -u github.com/fengleng/mars/contrib/log/zap
 ```
 ### logrus
 
 ```shell
-go get -u github.com/go-kratos/kratos/contrib/log/logrus/v2
+go get -u github.com/fengleng/mars/contrib/log/logrus
 ```
 
 ### fluent
 
 ```shell
-go get -u github.com/go-kratos/kratos/contrib/log/fluent/v2
+go get -u github.com/fengleng/mars/contrib/log/fluent
 ```
 
 ### aliyun
 
 ```shell
-go get -u github.com/go-kratos/kratos/contrib/log/aliyun/v2
+go get -u github.com/fengleng/mars/contrib/log/aliyun
 ```

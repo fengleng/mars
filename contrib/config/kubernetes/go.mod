@@ -1,12 +1,12 @@
-module github.com/go-kratos/kratos/contrib/config/kubernetes/v2
+module github.com/fengleng/mars/contrib/config/kubernetes
 
 go 1.16
 
 require (
-	github.com/go-kratos/kratos/v2 v2.4.0
+	github.com/fengleng/mars v0.0.0-00010101000000-000000000000
 	k8s.io/api v0.24.3
 	k8s.io/apimachinery v0.24.3
 	k8s.io/client-go v0.24.3
 )
 
-replace github.com/go-kratos/kratos/v2 => ../../../
+replace github.com/fengleng/mars => ../../../

@@ -3,7 +3,7 @@
 package proto
 
 import (
-	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/fengleng/mars/encoding"
 
 	"google.golang.org/protobuf/proto"
 )

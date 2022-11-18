@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/fengleng/mars/middleware"
 )
 
 func logging(module string) middleware.Middleware {

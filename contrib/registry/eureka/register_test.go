@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/fengleng/mars/registry"
 )
 
 func TestRegistry(t *testing.T) {

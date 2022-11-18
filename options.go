@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/log"
-	"github.com/go-kratos/kratos/v2/registry"
-	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/fengleng/mars/log"
+	"github.com/fengleng/mars/registry"
+	"github.com/fengleng/mars/transport"
 )
 
 // Option is an application option.

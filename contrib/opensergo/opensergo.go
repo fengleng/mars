@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/go-kratos/kratos/v2"
+	"github.com/fengleng/mars"
 
 	v1 "github.com/opensergo/opensergo-go/proto/service_contract/v1"
 	"golang.org/x/net/context"

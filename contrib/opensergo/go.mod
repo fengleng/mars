@@ -1,9 +1,9 @@
-module github.com/go-kratos/kratos/contrib/opensergo/v2
+module github.com/fengleng/mars/contrib/opensergo
 
 go 1.17
 
 require (
-	github.com/go-kratos/kratos/v2 v2.5.0
+	github.com/fengleng/mars v0.0.0-00010101000000-000000000000
 	github.com/opensergo/opensergo-go v0.0.0-20220331070310-e5b01fee4d1c
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
 	google.golang.org/genproto v0.0.0-20220519153652-3a47de7e79bd
@@ -21,4 +21,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.0 // indirect
 )
 
-replace github.com/go-kratos/kratos/v2 => ../../
+replace github.com/fengleng/mars => ../../

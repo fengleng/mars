@@ -1,13 +1,11 @@
-module github.com/go-kratos/kratos/contrib/config/polaris/v2
+module github.com/fengleng/mars/contrib/config/polaris
 
 go 1.16
 
-require (
-	github.com/go-kratos/kratos/v2 v2.4.0
-	github.com/polarismesh/polaris-go v1.1.0
-)
+require github.com/polarismesh/polaris-go v1.1.0
 
 require (
+	github.com/fengleng/mars v0.0.0-00010101000000-000000000000
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/prometheus/client_golang v1.12.2 // indirect
 	github.com/prometheus/common v0.35.0 // indirect
@@ -20,4 +18,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/go-kratos/kratos/v2 => ../../../
+replace github.com/fengleng/mars => ../../../

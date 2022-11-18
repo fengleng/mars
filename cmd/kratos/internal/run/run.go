@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/AlecAivazis/survey/v2"
+	"github.com/AlecAivazis/survey"
 	"github.com/spf13/cobra"
 )
 

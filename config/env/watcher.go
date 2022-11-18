@@ -3,7 +3,7 @@ package env
 import (
 	"context"
 
-	"github.com/go-kratos/kratos/v2/config"
+	"github.com/fengleng/mars/config"
 )
 
 type watcher struct {

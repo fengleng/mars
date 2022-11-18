@@ -7,8 +7,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/selector"
-	"github.com/go-kratos/kratos/v2/selector/node/ewma"
+	"github.com/fengleng/mars/selector"
+	"github.com/fengleng/mars/selector/node/ewma"
 )
 
 const (

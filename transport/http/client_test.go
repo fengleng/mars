@@ -15,10 +15,10 @@ import (
 	"testing"
 	"time"
 
-	kratosErrors "github.com/go-kratos/kratos/v2/errors"
-	"github.com/go-kratos/kratos/v2/middleware"
-	"github.com/go-kratos/kratos/v2/registry"
-	"github.com/go-kratos/kratos/v2/selector"
+	kratosErrors "github.com/fengleng/mars/errors"
+	"github.com/fengleng/mars/middleware"
+	"github.com/fengleng/mars/registry"
+	"github.com/fengleng/mars/selector"
 )
 
 type mockRoundTripper struct{}

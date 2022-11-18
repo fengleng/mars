@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/registry"
-	"github.com/go-kratos/kratos/v2/transport/grpc"
-	"github.com/go-kratos/kratos/v2/transport/http"
+	"github.com/fengleng/mars/registry"
+	"github.com/fengleng/mars/transport/grpc"
+	"github.com/fengleng/mars/transport/http"
 )
 
 type mockRegistry struct {
@@ -203,7 +203,7 @@ func TestApp_Context(t *testing.T) {
 			id:       "2",
 			name:     "kratos-v2",
 			instance: &registry.ServiceInstance{Endpoints: []string{"test"}},
-			metadata: map[string]string{"kratos": "https://github.com/go-kratos/kratos"},
+			metadata: map[string]string{"kratos": "https://github.com/fengleng/mars"},
 			version:  "v2",
 			want: struct {
 				id       string
@@ -213,7 +213,7 @@ func TestApp_Context(t *testing.T) {
 				metadata map[string]string
 			}{
 				id: "2", version: "v2", name: "kratos-v2", endpoint: []string{"test"},
-				metadata: map[string]string{"kratos": "https://github.com/go-kratos/kratos"},
+				metadata: map[string]string{"kratos": "https://github.com/fengleng/mars"},
 			},
 		},
 		{

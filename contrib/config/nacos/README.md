@@ -2,7 +2,7 @@
 
 ```go
 import (
-	kconfig "github.com/go-kratos/kratos/v2/config"
+	kconfig "github.com/fengleng/mars/config"
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 )

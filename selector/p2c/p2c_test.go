@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/registry"
-	"github.com/go-kratos/kratos/v2/selector"
-	"github.com/go-kratos/kratos/v2/selector/filter"
+	"github.com/fengleng/mars/registry"
+	"github.com/fengleng/mars/selector"
+	"github.com/fengleng/mars/selector/filter"
 )
 
 func TestWrr3(t *testing.T) {

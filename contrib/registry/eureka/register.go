@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/fengleng/mars/registry"
 )
 
 var (
@@ -47,7 +47,7 @@ func New(eurekaUrls []string, opts ...Option) (*Registry, error) {
 		ctx:               context.Background(),
 		heartbeatInterval: heartbeatTime,
 		refreshInterval:   refreshTime,
-		eurekaPath:        "eureka/v2",
+		eurekaPath:        "eureka",
 	}
 
 	for _, o := range opts {

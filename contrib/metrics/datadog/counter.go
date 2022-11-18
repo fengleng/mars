@@ -1,7 +1,7 @@
 package datadog
 
 import (
-	"github.com/go-kratos/kratos/v2/metrics"
+	"github.com/fengleng/mars/metrics"
 )
 
 var _ metrics.Counter = (*counter)(nil)

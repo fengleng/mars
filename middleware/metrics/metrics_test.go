@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/go-kratos/kratos/v2/metrics"
-	"github.com/go-kratos/kratos/v2/transport"
-	"github.com/go-kratos/kratos/v2/transport/http"
+	"github.com/fengleng/mars/metrics"
+	"github.com/fengleng/mars/transport"
+	"github.com/fengleng/mars/transport/http"
 )
 
 type (

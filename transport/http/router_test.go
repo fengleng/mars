@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/go-kratos/kratos/v2/internal/host"
+	"github.com/fengleng/mars/internal/host"
 )
 
 const appJSONStr = "application/json"

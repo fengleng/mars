@@ -7,7 +7,7 @@ import (
 
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/go-kratos/kratos/v2/internal/testdata/binding"
+	"github.com/fengleng/mars/internal/testdata/binding"
 )
 
 func Test_NewTracer(t *testing.T) {
