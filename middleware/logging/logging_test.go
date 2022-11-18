@@ -6,9 +6,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gososy/sorpc/log"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/transport"
 )
 
 var _ transport.Transporter = (*Transport)(nil)

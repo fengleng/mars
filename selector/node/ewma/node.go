@@ -8,9 +8,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/gososy/sorpc/errors"
+	"github.com/go-kratos/kratos/v2/errors"
 
-	"github.com/gososy/sorpc/selector"
+	"github.com/go-kratos/kratos/v2/selector"
 )
 
 const (

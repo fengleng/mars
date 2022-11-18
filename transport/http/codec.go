@@ -5,9 +5,9 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/gososy/sorpc/encoding"
-	"github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/internal/httputil"
+	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/internal/httputil"
 )
 
 // SupportPackageIsVersion1 These constants should not be referenced from any other code.

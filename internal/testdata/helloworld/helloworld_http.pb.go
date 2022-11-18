@@ -6,8 +6,8 @@ package helloworld
 
 import (
 	context "context"
-	http "github.com/gososy/sorpc/transport/http"
-	binding "github.com/gososy/sorpc/transport/http/binding"
+	http "github.com/go-kratos/kratos/v2/transport/http"
+	binding "github.com/go-kratos/kratos/v2/transport/http/binding"
 )
 
 // This is a compile-time assertion to ensure that this generated file

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gososy/sorpc/log"
+	"github.com/go-kratos/kratos/v2/log"
 
 	"github.com/imdario/mergo"
 	"google.golang.org/protobuf/encoding/protojson"

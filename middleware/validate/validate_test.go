@@ -5,8 +5,8 @@ import (
 	"errors"
 	"testing"
 
-	kratoserrors "github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/middleware"
+	kratoserrors "github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/middleware"
 )
 
 // protoVali implement validate.validator

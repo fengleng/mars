@@ -3,7 +3,7 @@
 package proto
 
 import (
-	"github.com/gososy/sorpc/encoding"
+	"github.com/go-kratos/kratos/v2/encoding"
 
 	"google.golang.org/protobuf/proto"
 )

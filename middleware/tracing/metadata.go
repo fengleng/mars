@@ -5,8 +5,8 @@ import (
 
 	"go.opentelemetry.io/otel/propagation"
 
-	"github.com/gososy/sorpc/app"
-	"github.com/gososy/sorpc/metadata"
+	"github.com/go-kratos/kratos/v2"
+	"github.com/go-kratos/kratos/v2/metadata"
 )
 
 const serviceHeader = "x-md-service-name"
@@ -18,9 +18,9 @@ var _ propagation.TextMapPropagator = Metadata{}
 
 // Inject sets metadata key-values from ctx into the carrier.
 func (b Metadata) Inject(ctx context.Context, carrier propagation.TextMapCarrier) {
-	appInfo, ok := app.FromContext(ctx)
+	app, ok := kratos.FromContext(ctx)
 	if ok {
-		carrier.Set(serviceHeader, appInfo.Name())
+		carrier.Set(serviceHeader, app.Name())
 	}
 }
 

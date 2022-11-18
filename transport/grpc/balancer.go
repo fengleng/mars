@@ -1,9 +1,9 @@
 package grpc
 
 import (
-	"github.com/gososy/sorpc/registry"
-	"github.com/gososy/sorpc/selector"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/go-kratos/kratos/v2/selector"
+	"github.com/go-kratos/kratos/v2/transport"
 
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/balancer/base"

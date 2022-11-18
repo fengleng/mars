@@ -1,6 +1,0 @@
-# Ratelimit
-
-## Algorithms
-
-- [bbr](./bbr)
-

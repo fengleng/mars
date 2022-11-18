@@ -9,7 +9,7 @@ import (
 
 	"google.golang.org/grpc/resolver"
 
-	"github.com/gososy/sorpc/registry"
+	"github.com/go-kratos/kratos/v2/registry"
 )
 
 type testClientConn struct {

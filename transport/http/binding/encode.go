@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"regexp"
 
-	"github.com/gososy/sorpc/encoding/form"
+	"github.com/go-kratos/kratos/v2/encoding/form"
 	"google.golang.org/protobuf/proto"
 )
 

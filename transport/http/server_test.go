@@ -14,8 +14,8 @@ import (
 	"testing"
 	"time"
 
-	kratoserrors "github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/internal/host"
+	kratoserrors "github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/internal/host"
 )
 
 var h = func(w http.ResponseWriter, r *http.Request) {
@@ -45,8 +45,7 @@ func TestServeHTTP(t *testing.T) {
 	ln, err := net.Listen("tcp", ":0")
 	if err != nil {
 		t.Fatal(err)
-	}
-	mux := NewServer(Listener(ln))
+	}	mux := NewServer(Listener(ln))
 	mux.HandleFunc("/index", h)
 	mux.Route("/errors").GET("/cause", func(ctx Context) error {
 		return kratoserrors.BadRequest("xxx", "zzz").

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gososy/sorpc/aegis/ratelimit"
+	"github.com/go-kratos/aegis/ratelimit"
 )
 
 type (

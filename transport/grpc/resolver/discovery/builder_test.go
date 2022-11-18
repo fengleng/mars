@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc/resolver"
 	"google.golang.org/grpc/serviceconfig"
 
-	"github.com/gososy/sorpc/registry"
+	"github.com/go-kratos/kratos/v2/registry"
 )
 
 func TestWithInsecure(t *testing.T) {

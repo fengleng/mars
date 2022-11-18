@@ -4,10 +4,10 @@ import (
 	"errors"
 	"fmt"
 
-	//"google.golang.org/genproto/googleapis/errdetails"
+	"google.golang.org/genproto/googleapis/rpc/errdetails"
 	"google.golang.org/grpc/status"
 
-	httpstatus "github.com/gososy/sorpc/errors/status"
+	httpstatus "github.com/go-kratos/kratos/v2/transport/http/status"
 )
 
 const (

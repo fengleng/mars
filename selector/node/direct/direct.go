@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/gososy/sorpc/selector"
+	"github.com/go-kratos/kratos/v2/selector"
 )
 
 const (

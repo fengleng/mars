@@ -5,9 +5,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/gososy/sorpc/metrics"
-	"github.com/gososy/sorpc/transport"
-	"github.com/gososy/sorpc/transport/http"
+	"github.com/go-kratos/kratos/v2/metrics"
+	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/go-kratos/kratos/v2/transport/http"
 )
 
 type (

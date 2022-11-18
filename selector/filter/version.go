@@ -3,7 +3,7 @@ package filter
 import (
 	"context"
 
-	"github.com/gososy/sorpc/selector"
+	"github.com/go-kratos/kratos/v2/selector"
 )
 
 // Version is version filter.

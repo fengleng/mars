@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/log"
+	"github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/log"
 )
 
 func TestOnce(t *testing.T) {

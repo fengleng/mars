@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gososy/sorpc/config"
+	"github.com/go-kratos/kratos/v2/config"
 )
 
 var _ config.Source = (*file)(nil)

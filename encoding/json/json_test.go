@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	testData "github.com/gososy/sorpc/testdata/encoding"
+	testData "github.com/go-kratos/kratos/v2/internal/testdata/encoding"
 )
 
 type testEmbed struct {

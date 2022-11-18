@@ -13,11 +13,11 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/internal/matcher"
-	pb "github.com/gososy/sorpc/internal/testdata/helloworld"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/internal/matcher"
+	pb "github.com/go-kratos/kratos/v2/internal/testdata/helloworld"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/transport"
 )
 
 // server is used to implement helloworld.GreeterServer.

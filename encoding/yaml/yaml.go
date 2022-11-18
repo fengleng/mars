@@ -3,7 +3,7 @@ package yaml
 import (
 	"gopkg.in/yaml.v3"
 
-	"github.com/gososy/sorpc/encoding"
+	"github.com/go-kratos/kratos/v2/encoding"
 )
 
 // Name is the name registered for the yaml codec.

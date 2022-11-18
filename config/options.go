@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gososy/sorpc/encoding"
-	"github.com/gososy/sorpc/log"
+	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/go-kratos/kratos/v2/log"
 )
 
 // Decoder is config decoder.

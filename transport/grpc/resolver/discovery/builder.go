@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gososy/sorpc/registry"
+	"github.com/go-kratos/kratos/v2/registry"
 
 	"google.golang.org/grpc/resolver"
 )

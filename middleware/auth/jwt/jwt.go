@@ -6,11 +6,10 @@ import (
 	"strings"
 
 	"github.com/golang-jwt/jwt/v4"
-	//"github.com/golang-jwt/jwt/v4"
 
-	"github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/transport"
 )
 
 type authKey struct{}

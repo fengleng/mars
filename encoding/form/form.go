@@ -4,7 +4,7 @@ import (
 	"net/url"
 	"reflect"
 
-	"github.com/gososy/sorpc/encoding"
+	"github.com/go-kratos/kratos/v2/encoding"
 
 	"github.com/go-playground/form/v4"
 	"google.golang.org/protobuf/proto"

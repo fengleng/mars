@@ -4,10 +4,10 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/gososy/sorpc/errors"
+	"github.com/go-kratos/kratos/v2/errors"
 
-	"github.com/gososy/sorpc/encoding"
-	"github.com/gososy/sorpc/encoding/form"
+	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/go-kratos/kratos/v2/encoding/form"
 )
 
 // BindQuery bind vars parameters to target.

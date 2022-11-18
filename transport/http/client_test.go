@@ -15,10 +15,10 @@ import (
 	"testing"
 	"time"
 
-	kratosErrors "github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/registry"
-	"github.com/gososy/sorpc/selector"
+	kratosErrors "github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/go-kratos/kratos/v2/selector"
 )
 
 type mockRoundTripper struct{}

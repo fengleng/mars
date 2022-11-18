@@ -5,15 +5,15 @@ import (
 	"reflect"
 	"testing"
 
-	bdtest "github.com/gososy/sorpc/testdata/binding"
-	complex "github.com/gososy/sorpc/testdata/complex"
-	ectest "github.com/gososy/sorpc/testdata/encoding"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/fieldmaskpb"
 	"google.golang.org/protobuf/types/known/timestamppb"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 
-	"github.com/gososy/sorpc/encoding"
+	"github.com/go-kratos/kratos/v2/encoding"
+	bdtest "github.com/go-kratos/kratos/v2/internal/testdata/binding"
+	"github.com/go-kratos/kratos/v2/internal/testdata/complex"
+	ectest "github.com/go-kratos/kratos/v2/internal/testdata/encoding"
 )
 
 type LoginRequest struct {

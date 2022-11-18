@@ -3,13 +3,13 @@ package tracing
 import (
 	"context"
 
-	"github.com/gososy/sorpc/log"
+	"github.com/go-kratos/kratos/v2/log"
 
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/transport"
 )
 
 // Option is tracing option.

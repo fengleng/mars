@@ -6,9 +6,9 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gososy/sorpc/metadata"
-	"github.com/gososy/sorpc/transport"
-	"github.com/gososy/sorpc/transport/http"
+	"github.com/go-kratos/kratos/v2/metadata"
+	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/go-kratos/kratos/v2/transport/http"
 
 	"go.opentelemetry.io/otel/attribute"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"

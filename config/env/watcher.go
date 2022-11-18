@@ -3,7 +3,7 @@ package env
 import (
 	"context"
 
-	"github.com/gososy/sorpc/config"
+	"github.com/go-kratos/kratos/v2/config"
 )
 
 type watcher struct {

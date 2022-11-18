@@ -5,7 +5,7 @@ import (
 
 	"google.golang.org/protobuf/types/known/fieldmaskpb"
 
-	"github.com/gososy/sorpc/internal/testdata/binding"
+	"github.com/go-kratos/kratos/v2/internal/testdata/binding"
 )
 
 func TestProtoPath(t *testing.T) {

@@ -6,16 +6,16 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gososy/sorpc/log"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/registry"
-	"github.com/gososy/sorpc/selector"
-	"github.com/gososy/sorpc/selector/wrr"
-	"github.com/gososy/sorpc/transport"
-	"github.com/gososy/sorpc/transport/grpc/resolver/discovery"
+	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/go-kratos/kratos/v2/selector"
+	"github.com/go-kratos/kratos/v2/selector/wrr"
+	"github.com/go-kratos/kratos/v2/transport"
+	"github.com/go-kratos/kratos/v2/transport/grpc/resolver/discovery"
 
 	// init resolver
-	_ "github.com/gososy/sorpc/transport/grpc/resolver/direct"
+	_ "github.com/go-kratos/kratos/v2/transport/grpc/resolver/direct"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

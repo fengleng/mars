@@ -4,9 +4,9 @@ import (
 	"context"
 	"runtime"
 
-	"github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/log"
-	"github.com/gososy/sorpc/middleware"
+	"github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/middleware"
 )
 
 // ErrUnknownRequest is unknown request error.

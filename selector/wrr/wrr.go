@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gososy/sorpc/selector"
-	"github.com/gososy/sorpc/selector/node/direct"
+	"github.com/go-kratos/kratos/v2/selector"
+	"github.com/go-kratos/kratos/v2/selector/node/direct"
 )
 
 const (

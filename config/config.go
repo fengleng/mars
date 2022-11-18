@@ -8,11 +8,11 @@ import (
 	"time"
 
 	// init encoding
-	_ "github.com/gososy/sorpc/encoding/json"
-	_ "github.com/gososy/sorpc/encoding/proto"
-	_ "github.com/gososy/sorpc/encoding/xml"
-	_ "github.com/gososy/sorpc/encoding/yaml"
-	"github.com/gososy/sorpc/log"
+	_ "github.com/go-kratos/kratos/v2/encoding/json"
+	_ "github.com/go-kratos/kratos/v2/encoding/proto"
+	_ "github.com/go-kratos/kratos/v2/encoding/xml"
+	_ "github.com/go-kratos/kratos/v2/encoding/yaml"
+	"github.com/go-kratos/kratos/v2/log"
 )
 
 var (

@@ -9,15 +9,15 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gososy/sorpc/encoding"
-	"github.com/gososy/sorpc/errors"
-	"github.com/gososy/sorpc/internal/host"
-	"github.com/gososy/sorpc/internal/httputil"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/registry"
-	"github.com/gososy/sorpc/selector"
-	"github.com/gososy/sorpc/selector/wrr"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/encoding"
+	"github.com/go-kratos/kratos/v2/errors"
+	"github.com/go-kratos/kratos/v2/internal/host"
+	"github.com/go-kratos/kratos/v2/internal/httputil"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/go-kratos/kratos/v2/selector"
+	"github.com/go-kratos/kratos/v2/selector/wrr"
+	"github.com/go-kratos/kratos/v2/transport"
 )
 
 func init() {

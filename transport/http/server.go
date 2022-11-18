@@ -9,13 +9,13 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/gososy/sorpc/internal/endpoint"
-	"github.com/gososy/sorpc/internal/matcher"
+	"github.com/go-kratos/kratos/v2/internal/endpoint"
+	"github.com/go-kratos/kratos/v2/internal/matcher"
 
-	"github.com/gososy/sorpc/internal/host"
-	"github.com/gososy/sorpc/log"
-	"github.com/gososy/sorpc/middleware"
-	"github.com/gososy/sorpc/transport"
+	"github.com/go-kratos/kratos/v2/internal/host"
+	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/middleware"
+	"github.com/go-kratos/kratos/v2/transport"
 
 	"github.com/gorilla/mux"
 )
