@@ -4,11 +4,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"github.com/AlecAivazis/survey/v2"
 	"os"
 	"path"
 	"time"
 
-	"github.com/AlecAivazis/survey"
 	"github.com/spf13/cobra"
 
 	"github.com/fengleng/mars/cmd/kratos/internal/base"
