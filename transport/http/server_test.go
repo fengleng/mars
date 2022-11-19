@@ -45,7 +45,8 @@ func TestServeHTTP(t *testing.T) {
 	ln, err := net.Listen("tcp", ":0")
 	if err != nil {
 		t.Fatal(err)
-	}	mux := NewServer(Listener(ln))
+	}
+	mux := NewServer(Listener(ln))
 	mux.HandleFunc("/index", h)
 	mux.Route("/errors").GET("/cause", func(ctx Context) error {
 		return kratoserrors.BadRequest("xxx", "zzz").
