@@ -123,7 +123,7 @@ func TestServer(t *testing.T) {
 		)
 		childSpanID = SpanID()(ctx).(string)
 		childTraceID = TraceID()(ctx).(string)
-		return req.(string) + "https://go-kratos.dev", nil
+		return req.(string) + "https://go-mars.dev", nil
 	}
 
 	var ctx context.Context
@@ -195,7 +195,7 @@ func TestClient(t *testing.T) {
 		)
 		childSpanID = SpanID()(ctx).(string)
 		childTraceID = TraceID()(ctx).(string)
-		return req.(string) + "https://go-kratos.dev", nil
+		return req.(string) + "https://go-mars.dev", nil
 	}
 
 	var ctx context.Context

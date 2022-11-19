@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-const testKey = "/kratos/test/config"
+const testKey = "/mars/test/config"
 
 func TestConfig(t *testing.T) {
 	client, err := clientv3.New(clientv3.Config{
@@ -79,7 +79,7 @@ func TestExtToFormat(t *testing.T) {
 		_ = client.Close()
 	}()
 
-	tp := "/kratos/test/ext"
+	tp := "/mars/test/ext"
 	tn := "a.bird.json"
 	tk := tp + "/" + tn
 	tc := `{"a":1}`

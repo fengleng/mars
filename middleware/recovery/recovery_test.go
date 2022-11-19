@@ -25,7 +25,7 @@ func TestOnce(t *testing.T) {
 
 func TestNotPanic(t *testing.T) {
 	next := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return req.(string) + "https://go-kratos.dev", nil
+		return req.(string) + "https://go-mars.dev", nil
 	}
 
 	_, e := Recovery(WithHandler(func(ctx context.Context, req, err interface{}) error {

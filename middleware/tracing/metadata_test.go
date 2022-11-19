@@ -22,9 +22,9 @@ func TestMetadata_Inject(t *testing.T) {
 		want string
 	}{
 		{
-			name: "https://go-kratos.dev",
-			args: args{"https://go-kratos.dev", propagation.HeaderCarrier{}},
-			want: "https://go-kratos.dev",
+			name: "https://go-mars.dev",
+			args: args{"https://go-mars.dev", propagation.HeaderCarrier{}},
+			want: "https://go-mars.dev",
 		},
 		{
 			name: "https://github.com/fengleng/mars",
@@ -57,12 +57,12 @@ func TestMetadata_Extract(t *testing.T) {
 		crash bool
 	}{
 		{
-			name: "https://go-kratos.dev",
+			name: "https://go-mars.dev",
 			args: args{
 				parent:  context.Background(),
-				carrier: propagation.HeaderCarrier{"X-Md-Service-Name": []string{"https://go-kratos.dev"}},
+				carrier: propagation.HeaderCarrier{"X-Md-Service-Name": []string{"https://go-mars.dev"}},
 			},
-			want: "https://go-kratos.dev",
+			want: "https://go-mars.dev",
 		},
 		{
 			name: "https://github.com/fengleng/mars",

@@ -423,7 +423,7 @@ func instancesToServiceInstances(instances []model.Instance) []*registry.Service
 
 func instanceToServiceInstance(instance model.Instance) *registry.ServiceInstance {
 	metadata := instance.GetMetadata()
-	// Usually, it won't fail in kratos if register correctly
+	// Usually, it won't fail in mars if register correctly
 	kind := ""
 	if k, ok := metadata["kind"]; ok {
 		kind = k

@@ -103,7 +103,7 @@ func (m *mockWatch) Next() ([]*registry.ServiceInstance, error) {
 	m.count++
 	instance := &registry.ServiceInstance{
 		ID:        "1",
-		Name:      "kratos",
+		Name:      "mars",
 		Version:   "v1",
 		Metadata:  map[string]string{},
 		Endpoints: []string{fmt.Sprintf("http://127.0.0.1:9001?isSecure=%s", strconv.FormatBool(m.isSecure))},

@@ -39,7 +39,7 @@ const (
 	envKey           = "environment"
 	envVar           = "CAS_ENVIRONMENT_ID"
 	appIDVar         = "CAS_APPLICATION_NAME"
-	frameWorkName    = "kratos"
+	frameWorkName    = "mars"
 	frameWorkVersion = "v2"
 )
 

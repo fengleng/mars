@@ -5,9 +5,9 @@ package kratos.api;
 import "google/protobuf/descriptor.proto";
 import "google/api/annotations.proto";
 
-option go_package = "github.com/fengleng/mars/api/proto/kratos/api;metadata";
+option go_package = "github.com/fengleng/mars/api/proto/mars/api;metadata";
 option java_multiple_files = true;
-option java_package = "com.github.kratos.api";
+option java_package = "com.github.mars.api";
 option objc_class_prefix = "KratosAPI";
 
 

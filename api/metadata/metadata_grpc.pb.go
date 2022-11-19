@@ -38,7 +38,7 @@ func NewMetadataClient(cc grpc.ClientConnInterface) MetadataClient {
 
 func (c *metadataClient) ListServices(ctx context.Context, in *ListServicesRequest, opts ...grpc.CallOption) (*ListServicesReply, error) {
 	out := new(ListServicesReply)
-	err := c.cc.Invoke(ctx, "/kratos.api.Metadata/ListServices", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/mars.api.Metadata/ListServices", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -47,7 +47,7 @@ func (c *metadataClient) ListServices(ctx context.Context, in *ListServicesReque
 
 func (c *metadataClient) GetServiceDesc(ctx context.Context, in *GetServiceDescRequest, opts ...grpc.CallOption) (*GetServiceDescReply, error) {
 	out := new(GetServiceDescReply)
-	err := c.cc.Invoke(ctx, "/kratos.api.Metadata/GetServiceDesc", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/mars.api.Metadata/GetServiceDesc", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func _Metadata_ListServices_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kratos.api.Metadata/ListServices",
+		FullMethod: "/mars.api.Metadata/ListServices",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MetadataServer).ListServices(ctx, req.(*ListServicesRequest))
@@ -116,7 +116,7 @@ func _Metadata_GetServiceDesc_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/kratos.api.Metadata/GetServiceDesc",
+		FullMethod: "/mars.api.Metadata/GetServiceDesc",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MetadataServer).GetServiceDesc(ctx, req.(*GetServiceDescRequest))
@@ -128,7 +128,7 @@ func _Metadata_GetServiceDesc_Handler(srv interface{}, ctx context.Context, dec 
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Metadata_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "kratos.api.Metadata",
+	ServiceName: "mars.api.Metadata",
 	HandlerType: (*MetadataServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

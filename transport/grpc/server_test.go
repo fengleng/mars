@@ -135,13 +135,13 @@ func testClient(t *testing.T, srv *Server) {
 		t.Fatal(err)
 	}
 	client := pb.NewGreeterClient(conn)
-	reply, err := client.SayHello(context.Background(), &pb.HelloRequest{Name: "kratos"})
+	reply, err := client.SayHello(context.Background(), &pb.HelloRequest{Name: "mars"})
 	t.Log(err)
 	if err != nil {
 		t.Errorf("failed to call: %v", err)
 	}
-	if !reflect.DeepEqual(reply.Message, "Hello kratos") {
-		t.Errorf("expect %s, got %s", "Hello kratos", reply.Message)
+	if !reflect.DeepEqual(reply.Message, "Hello mars") {
+		t.Errorf("expect %s, got %s", "Hello mars", reply.Message)
 	}
 
 	streamCli, err := client.SayHelloStream(context.Background())

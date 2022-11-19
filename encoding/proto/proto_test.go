@@ -19,7 +19,7 @@ func TestCodec(t *testing.T) {
 
 	model := testData.TestModel{
 		Id:    1,
-		Name:  "kratos",
+		Name:  "mars",
 		Hobby: []string{"study", "eat", "play"},
 	}
 

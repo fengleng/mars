@@ -35,16 +35,16 @@ func TestBindQuery(t *testing.T) {
 		{
 			name: "test",
 			args: args{
-				vars:   map[string][]string{"name": {"kratos"}, "url": {"https://go-kratos.dev/"}},
+				vars:   map[string][]string{"name": {"mars"}, "url": {"https://go-mars.dev/"}},
 				target: &p1,
 			},
 			wantErr: false,
-			want:    &TestBind{"kratos", "https://go-kratos.dev/"},
+			want:    &TestBind{"mars", "https://go-mars.dev/"},
 		},
 		{
 			name: "test1",
 			args: args{
-				vars:   map[string][]string{"age": {"kratos"}, "url": {"https://go-kratos.dev/"}},
+				vars:   map[string][]string{"age": {"mars"}, "url": {"https://go-mars.dev/"}},
 				target: &p2,
 			},
 			wantErr: true,
@@ -53,7 +53,7 @@ func TestBindQuery(t *testing.T) {
 		{
 			name: "test2",
 			args: args{
-				vars:   map[string][]string{"age": {"1"}, "url": {"https://go-kratos.dev/"}},
+				vars:   map[string][]string{"age": {"1"}, "url": {"https://go-mars.dev/"}},
 				target: &TestBind2{},
 			},
 			wantErr: false,
@@ -108,12 +108,12 @@ func TestBindForm(t *testing.T) {
 				req: &http.Request{
 					Method: "POST",
 					Header: http.Header{"Content-Type": {"application/x-www-form-urlencoded; param=value"}},
-					Body:   io.NopCloser(strings.NewReader("name=kratos&url=https://go-kratos.dev/")),
+					Body:   io.NopCloser(strings.NewReader("name=mars&url=https://go-mars.dev/")),
 				},
 				target: &p1,
 			},
 			wantErr: false,
-			want:    &TestBind{"kratos", "https://go-kratos.dev/"},
+			want:    &TestBind{"mars", "https://go-mars.dev/"},
 		},
 		{
 			name: "error BadRequest",

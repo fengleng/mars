@@ -29,7 +29,7 @@ func NewTiming(name string, opts ...Option) metrics.Observer {
 	}
 }
 
-// With is applied in kratos/middleware/metrics/metrics.go (method,path)
+// With is applied in mars/middleware/metrics/metrics.go (method,path)
 func (d *timing) With(values ...string) metrics.Observer {
 	return &timing{
 		name: d.name,

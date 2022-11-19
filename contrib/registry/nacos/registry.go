@@ -15,7 +15,7 @@ import (
 	"github.com/fengleng/mars/registry"
 )
 
-var ErrServiceInstanceNameEmpty = errors.New("kratos/nacos: ServiceInstance.Name can not be empty")
+var ErrServiceInstanceNameEmpty = errors.New("mars/nacos: ServiceInstance.Name can not be empty")
 
 var (
 	_ registry.Registrar = (*Registry)(nil)

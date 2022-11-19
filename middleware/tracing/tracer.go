@@ -25,7 +25,7 @@ type Tracer struct {
 func NewTracer(kind trace.SpanKind, opts ...Option) *Tracer {
 	op := options{
 		propagator: propagation.NewCompositeTextMapPropagator(Metadata{}, propagation.Baggage{}, propagation.TraceContext{}),
-		tracerName: "kratos",
+		tracerName: "mars",
 	}
 	for _, o := range opts {
 		o(&op)

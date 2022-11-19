@@ -85,7 +85,7 @@ func TestWithTLSConfig(t *testing.T) {
 }
 
 func TestWithUserAgent(t *testing.T) {
-	ov := "kratos"
+	ov := "mars"
 	o := WithUserAgent(ov)
 	co := &clientOptions{}
 	o(co)
@@ -159,7 +159,7 @@ type mockWatcher struct{}
 func (m *mockWatcher) Next() ([]*registry.ServiceInstance, error) {
 	instance := &registry.ServiceInstance{
 		ID:        "1",
-		Name:      "kratos",
+		Name:      "mars",
 		Version:   "v1",
 		Metadata:  map[string]string{},
 		Endpoints: []string{fmt.Sprintf("http://127.0.0.1:9001?isSecure=%s", strconv.FormatBool(false))},
@@ -312,11 +312,11 @@ func TestNewClient(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	_, err = NewClient(context.Background(), WithEndpoint("127.0.0.1:9999"), WithTLSConfig(&tls.Config{ServerName: "www.kratos.com", RootCAs: nil}))
+	_, err = NewClient(context.Background(), WithEndpoint("127.0.0.1:9999"), WithTLSConfig(&tls.Config{ServerName: "www.mars.com", RootCAs: nil}))
 	if err != nil {
 		t.Error(err)
 	}
-	_, err = NewClient(context.Background(), WithDiscovery(&mockDiscovery{}), WithEndpoint("discovery:///go-kratos"))
+	_, err = NewClient(context.Background(), WithDiscovery(&mockDiscovery{}), WithEndpoint("discovery:///go-mars"))
 	if err != nil {
 		t.Error(err)
 	}
@@ -328,7 +328,7 @@ func TestNewClient(t *testing.T) {
 	if err == nil {
 		t.Error("except a parseTarget error")
 	}
-	_, err = NewClient(context.Background(), WithDiscovery(&mockDiscovery{}), WithEndpoint("https://go-kratos.dev/"))
+	_, err = NewClient(context.Background(), WithDiscovery(&mockDiscovery{}), WithEndpoint("https://go-mars.dev/"))
 	if err == nil {
 		t.Error("err should not be equal to nil")
 	}
@@ -336,7 +336,7 @@ func TestNewClient(t *testing.T) {
 	client, err := NewClient(
 		context.Background(),
 		WithDiscovery(&mockDiscovery{}),
-		WithEndpoint("discovery:///go-kratos"),
+		WithEndpoint("discovery:///go-mars"),
 		WithMiddleware(func(handler middleware.Handler) middleware.Handler {
 			t.Logf("handle in middleware")
 			return func(ctx context.Context, req interface{}) (interface{}, error) {
@@ -348,18 +348,18 @@ func TestNewClient(t *testing.T) {
 		t.Error(err)
 	}
 
-	err = client.Invoke(context.Background(), "POST", "/go", map[string]string{"name": "kratos"}, nil, EmptyCallOption{}, &mockCallOption{})
+	err = client.Invoke(context.Background(), "POST", "/go", map[string]string{"name": "mars"}, nil, EmptyCallOption{}, &mockCallOption{})
 	if err == nil {
 		t.Error("err should not be equal to nil")
 	}
-	err = client.Invoke(context.Background(), "POST", "/go", map[string]string{"name": "kratos"}, nil, EmptyCallOption{}, &mockCallOption{needErr: true})
+	err = client.Invoke(context.Background(), "POST", "/go", map[string]string{"name": "mars"}, nil, EmptyCallOption{}, &mockCallOption{needErr: true})
 	if err == nil {
 		t.Error("err should be equal to callOption err")
 	}
 	client.opts.encoder = func(ctx context.Context, contentType string, in interface{}) (body []byte, err error) {
 		return nil, errors.New("mock test encoder error")
 	}
-	err = client.Invoke(context.Background(), "POST", "/go", map[string]string{"name": "kratos"}, nil, EmptyCallOption{})
+	err = client.Invoke(context.Background(), "POST", "/go", map[string]string{"name": "mars"}, nil, EmptyCallOption{})
 	if err == nil {
 		t.Error("err should be equal to encoder error")
 	}

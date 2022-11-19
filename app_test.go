@@ -44,7 +44,7 @@ func TestApp(t *testing.T) {
 	hs := http.NewServer()
 	gs := grpc.NewServer()
 	app := New(
-		Name("kratos"),
+		Name("mars"),
 		Version("v1.0.0"),
 		Server(hs, gs),
 		Registrar(&mockRegistry{service: make(map[string]*registry.ServiceInstance)}),
@@ -93,7 +93,7 @@ func TestApp_Metadata(t *testing.T) {
 }
 
 func TestApp_Endpoint(t *testing.T) {
-	v := []string{"https://go-kratos.dev", "localhost"}
+	v := []string{"https://go-mars.dev", "localhost"}
 	var endpoints []*url.URL
 	for _, urlStr := range v {
 		if endpoint, err := url.Parse(urlStr); err != nil {
@@ -122,13 +122,13 @@ func TestApp_buildInstance(t *testing.T) {
 		endpoints []string
 	}{
 		id:      "1",
-		name:    "kratos",
+		name:    "mars",
 		version: "v1.0.0",
 		metadata: map[string]string{
 			"a": "1",
 			"b": "2",
 		},
-		endpoints: []string{"https://go-kratos.dev", "localhost"},
+		endpoints: []string{"https://go-mars.dev", "localhost"},
 	}
 	var endpoints []*url.URL
 	for _, urlStr := range want.endpoints {
@@ -184,8 +184,8 @@ func TestApp_Context(t *testing.T) {
 	tests := []fields{
 		{
 			id:       "1",
-			name:     "kratos-v1",
-			instance: &registry.ServiceInstance{Endpoints: []string{"https://go-kratos.dev", "localhost"}},
+			name:     "mars-v1",
+			instance: &registry.ServiceInstance{Endpoints: []string{"https://go-mars.dev", "localhost"}},
 			metadata: map[string]string{},
 			version:  "v1",
 			want: struct {
@@ -195,15 +195,15 @@ func TestApp_Context(t *testing.T) {
 				endpoint []string
 				metadata map[string]string
 			}{
-				id: "1", version: "v1", name: "kratos-v1", endpoint: []string{"https://go-kratos.dev", "localhost"},
+				id: "1", version: "v1", name: "mars-v1", endpoint: []string{"https://go-mars.dev", "localhost"},
 				metadata: map[string]string{},
 			},
 		},
 		{
 			id:       "2",
-			name:     "kratos-v2",
+			name:     "mars-v2",
 			instance: &registry.ServiceInstance{Endpoints: []string{"test"}},
-			metadata: map[string]string{"kratos": "https://github.com/fengleng/mars"},
+			metadata: map[string]string{"mars": "https://github.com/fengleng/mars"},
 			version:  "v2",
 			want: struct {
 				id       string
@@ -212,13 +212,13 @@ func TestApp_Context(t *testing.T) {
 				endpoint []string
 				metadata map[string]string
 			}{
-				id: "2", version: "v2", name: "kratos-v2", endpoint: []string{"test"},
-				metadata: map[string]string{"kratos": "https://github.com/fengleng/mars"},
+				id: "2", version: "v2", name: "mars-v2", endpoint: []string{"test"},
+				metadata: map[string]string{"mars": "https://github.com/fengleng/mars"},
 			},
 		},
 		{
 			id:       "3",
-			name:     "kratos-v3",
+			name:     "mars-v3",
 			instance: nil,
 			metadata: make(map[string]string),
 			version:  "v3",
@@ -229,7 +229,7 @@ func TestApp_Context(t *testing.T) {
 				endpoint []string
 				metadata map[string]string
 			}{
-				id: "3", version: "v3", name: "kratos-v3", endpoint: nil,
+				id: "3", version: "v3", name: "mars-v3", endpoint: nil,
 				metadata: map[string]string{},
 			},
 		},

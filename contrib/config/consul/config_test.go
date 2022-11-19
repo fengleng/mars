@@ -10,9 +10,9 @@ import (
 	"github.com/fengleng/mars/config"
 )
 
-const testPath = "kratos/test/config"
+const testPath = "mars/test/config"
 
-const testKey = "kratos/test/config/key"
+const testKey = "mars/test/config/key"
 
 func TestConfig(t *testing.T) {
 	client, err := api.NewClient(&api.Config{
@@ -72,7 +72,7 @@ func TestExtToFormat(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	tp := "kratos/test/ext"
+	tp := "mars/test/ext"
 	tn := "a.bird.json"
 	tk := tp + "/" + tn
 	tc := `{"a":1}`

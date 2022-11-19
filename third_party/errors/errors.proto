@@ -4,7 +4,7 @@ package errors;
 
 option go_package = "github.com/fengleng/mars/errors;errors";
 option java_multiple_files = true;
-option java_package = "com.github.kratos.errors";
+option java_package = "com.github.mars.errors";
 option objc_class_prefix = "KratosErrors";
 
 import "google/protobuf/descriptor.proto";

@@ -19,7 +19,7 @@ func main() {
 	c := config.New(
 		config.WithSource(
 			apollo.NewSource(
-				apollo.WithAppID("kratos"),
+				apollo.WithAppID("mars"),
 				apollo.WithCluster("dev"),
 				apollo.WithEndpoint("http://localhost:8080"),
 				apollo.WithNamespace("application,event.yaml,demo.json"),

@@ -68,13 +68,13 @@ docker run -it --rm -p 8000:8000 --workdir /workspace golang
 ```shell
 apt-get update && apt-get -y install protobuf-compiler
 export GOPROXY=https://goproxy.io,direct
-go install github.com/fengleng/mars/cmd/kratos@latest && kratos upgrade
+go install github.com/fengleng/mars/cmd/mars@latest && mars upgrade
 ```
   
 ```shell
-kratos new helloworld
+mars new helloworld
 cd helloworld/ && go mod tidy
-kratos run
+mars run
 ```
   
 Use a browser to open and visit: `http://localhost:8000/helloworld/kratos`, The kratos program is running!

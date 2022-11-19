@@ -34,7 +34,7 @@ func TestContentType(t *testing.T) {
 		subtype string
 		want    string
 	}{
-		{"kratos", "kratos", "application/kratos"},
+		{"mars", "mars", "application/mars"},
 		{"json", "json", "application/json"},
 	}
 	for _, tt := range tests {

@@ -270,18 +270,18 @@ func file_metadata_metadata_proto_rawDescGZIP() []byte {
 
 var file_metadata_metadata_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_metadata_metadata_proto_goTypes = []interface{}{
-	(*ListServicesRequest)(nil),            // 0: kratos.api.ListServicesRequest
-	(*ListServicesReply)(nil),              // 1: kratos.api.ListServicesReply
-	(*GetServiceDescRequest)(nil),          // 2: kratos.api.GetServiceDescRequest
-	(*GetServiceDescReply)(nil),            // 3: kratos.api.GetServiceDescReply
+	(*ListServicesRequest)(nil),            // 0: mars.api.ListServicesRequest
+	(*ListServicesReply)(nil),              // 1: mars.api.ListServicesReply
+	(*GetServiceDescRequest)(nil),          // 2: mars.api.GetServiceDescRequest
+	(*GetServiceDescReply)(nil),            // 3: mars.api.GetServiceDescReply
 	(*descriptorpb.FileDescriptorSet)(nil), // 4: google.protobuf.FileDescriptorSet
 }
 var file_metadata_metadata_proto_depIdxs = []int32{
-	4, // 0: kratos.api.GetServiceDescReply.file_desc_set:type_name -> google.protobuf.FileDescriptorSet
-	0, // 1: kratos.api.Metadata.ListServices:input_type -> kratos.api.ListServicesRequest
-	2, // 2: kratos.api.Metadata.GetServiceDesc:input_type -> kratos.api.GetServiceDescRequest
-	1, // 3: kratos.api.Metadata.ListServices:output_type -> kratos.api.ListServicesReply
-	3, // 4: kratos.api.Metadata.GetServiceDesc:output_type -> kratos.api.GetServiceDescReply
+	4, // 0: mars.api.GetServiceDescReply.file_desc_set:type_name -> google.protobuf.FileDescriptorSet
+	0, // 1: mars.api.Metadata.ListServices:input_type -> mars.api.ListServicesRequest
+	2, // 2: mars.api.Metadata.GetServiceDesc:input_type -> mars.api.GetServiceDescRequest
+	1, // 3: mars.api.Metadata.ListServices:output_type -> mars.api.ListServicesReply
+	3, // 4: mars.api.Metadata.GetServiceDesc:output_type -> mars.api.GetServiceDescReply
 	3, // [3:5] is the sub-list for method output_type
 	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

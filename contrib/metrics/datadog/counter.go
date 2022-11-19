@@ -27,7 +27,7 @@ func NewCounter(name string, opts ...Option) metrics.Counter {
 	}
 }
 
-// With is applied in kratos/middleware/metrics/metrics.go (method,path,code)
+// With is applied in mars/middleware/metrics/metrics.go (method,path,code)
 func (d *counter) With(values ...string) metrics.Counter {
 	return &counter{
 		name: d.name,

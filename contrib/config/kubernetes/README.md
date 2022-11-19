@@ -12,7 +12,7 @@ or use `kubect apply -f bind-role.yaml`
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: go-kratos:kube
+  name: go-mars:kube
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole

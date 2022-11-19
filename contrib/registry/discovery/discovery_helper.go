@@ -78,7 +78,7 @@ type discoveryInstance struct {
 	Status   int64             `json:"status"` // Status instance status, eg: 1UP 2Waiting
 }
 
-const _reservedInstanceIDKey = "kratos.v2.serviceinstance.id"
+const _reservedInstanceIDKey = "mars.v2.serviceinstance.id"
 
 // fromServerInstance convert registry.ServiceInstance into discoveryInstance
 func fromServerInstance(ins *registry.ServiceInstance, config *Config) *discoveryInstance {

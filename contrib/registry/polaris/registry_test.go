@@ -30,9 +30,9 @@ func TestRegistry(t *testing.T) {
 	ctx := context.Background()
 
 	svc := &registry.ServiceInstance{
-		Name:      "kratos-provider-0-",
+		Name:      "mars-provider-0-",
 		Version:   "test",
-		Metadata:  map[string]string{"app": "kratos"},
+		Metadata:  map[string]string{"app": "mars"},
 		Endpoints: []string{"tcp://127.0.0.1:9000?isSecure=false"},
 	}
 
@@ -43,7 +43,7 @@ func TestRegistry(t *testing.T) {
 
 	time.Sleep(time.Second)
 
-	result, err := r.GetService(context.Background(), "kratos-provider-0-tcp")
+	result, err := r.GetService(context.Background(), "mars-provider-0-tcp")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -53,12 +53,12 @@ func TestRegistry(t *testing.T) {
 	}
 
 	for _, item := range result {
-		if item.Name != "kratos-provider-0-tcp" || item.Endpoints[0] != "tcp://127.0.0.1:9000" {
+		if item.Name != "mars-provider-0-tcp" || item.Endpoints[0] != "tcp://127.0.0.1:9000" {
 			t.Fatal("register error")
 		}
 	}
 
-	watch, err := r.Watch(ctx, "kratos-provider-0-tcp")
+	watch, err := r.Watch(ctx, "mars-provider-0-tcp")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -81,9 +81,9 @@ func TestRegistry(t *testing.T) {
 	}
 	// Test add instance
 	svc1 := &registry.ServiceInstance{
-		Name:      "kratos-provider-0-",
+		Name:      "mars-provider-0-",
 		Version:   "test",
-		Metadata:  map[string]string{"app": "kratos"},
+		Metadata:  map[string]string{"app": "mars"},
 		Endpoints: []string{"tcp://127.0.0.1:9001?isSecure=false"},
 	}
 
@@ -95,7 +95,7 @@ func TestRegistry(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	result, err = r.GetService(ctx, "kratos-provider-0-tcp")
+	result, err = r.GetService(ctx, "mars-provider-0-tcp")
 
 	if err != nil {
 		t.Fatal(err)
@@ -143,21 +143,21 @@ func TestRegistryMany(t *testing.T) {
 
 	// Multi endpoint
 	svc := &registry.ServiceInstance{
-		Name:      "kratos-provider-1-",
+		Name:      "mars-provider-1-",
 		Version:   "test",
-		Metadata:  map[string]string{"app": "kratos"},
+		Metadata:  map[string]string{"app": "mars"},
 		Endpoints: []string{"tcp://127.0.0.1:9000?isSecure=false", "tcp://127.0.0.1:9001?isSecure=false"},
 	}
 	// Normal
 	svc1 := &registry.ServiceInstance{
-		Name:      "kratos-provider-2-",
+		Name:      "mars-provider-2-",
 		Version:   "test",
-		Metadata:  map[string]string{"app": "kratos"},
+		Metadata:  map[string]string{"app": "mars"},
 		Endpoints: []string{"tcp://127.0.0.1:9002?isSecure=false"},
 	}
 	// Without metadata
 	svc2 := &registry.ServiceInstance{
-		Name:      "kratos-provider-3-",
+		Name:      "mars-provider-3-",
 		Version:   "test",
 		Endpoints: []string{"tcp://127.0.0.1:9003?isSecure=false"},
 	}
@@ -176,33 +176,33 @@ func TestRegistryMany(t *testing.T) {
 
 	time.Sleep(3 * time.Second)
 
-	result1, err := r.GetService(ctx, "kratos-provider-1-tcp")
+	result1, err := r.GetService(ctx, "mars-provider-1-tcp")
 
-	if err != nil || len(result1) != 2 || result1[0].Name != "kratos-provider-1-tcp" {
+	if err != nil || len(result1) != 2 || result1[0].Name != "mars-provider-1-tcp" {
 		t.Fatal(err)
 	}
 
-	result2, err := r.GetService(ctx, "kratos-provider-2-tcp")
+	result2, err := r.GetService(ctx, "mars-provider-2-tcp")
 
-	if err != nil || len(result2) != 1 || result2[0].Name != "kratos-provider-2-tcp" || result2[0].Endpoints[0] != "tcp://127.0.0.1:9002" {
+	if err != nil || len(result2) != 1 || result2[0].Name != "mars-provider-2-tcp" || result2[0].Endpoints[0] != "tcp://127.0.0.1:9002" {
 		t.Fatal(err)
 	}
 
-	result3, err := r.GetService(ctx, "kratos-provider-3-tcp")
+	result3, err := r.GetService(ctx, "mars-provider-3-tcp")
 
-	if err != nil || len(result3) != 1 || result3[0].Name != "kratos-provider-3-tcp" || result3[0].Endpoints[0] != "tcp://127.0.0.1:9003" {
+	if err != nil || len(result3) != 1 || result3[0].Name != "mars-provider-3-tcp" || result3[0].Endpoints[0] != "tcp://127.0.0.1:9003" {
 		t.Fatal(err)
 	}
 
-	watch1, err := r.Watch(ctx, "kratos-provider-1-tcp")
+	watch1, err := r.Watch(ctx, "mars-provider-1-tcp")
 	if err != nil {
 		t.Fatal(err)
 	}
-	watch2, err := r.Watch(ctx, "kratos-provider-2-tcp")
+	watch2, err := r.Watch(ctx, "mars-provider-2-tcp")
 	if err != nil {
 		t.Fatal(err)
 	}
-	watch3, err := r.Watch(ctx, "kratos-provider-3-tcp")
+	watch3, err := r.Watch(ctx, "mars-provider-3-tcp")
 	if err != nil {
 		t.Fatal(err)
 	}
