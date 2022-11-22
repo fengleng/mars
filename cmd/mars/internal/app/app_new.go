@@ -54,6 +54,7 @@ func new(cmd *cobra.Command, args []string) {
 		output, err := goModComm.CombinedOutput()
 		if err != nil {
 			log.Errorf("err: %s", err)
+			a.done <- err
 			return
 		}
 		log.Info(string(output))
@@ -61,18 +62,21 @@ func new(cmd *cobra.Command, args []string) {
 		file, err := os.OpenFile(path.Join(a.AppDir, "makefile"), os.O_CREATE|os.O_RDWR, os.ModePerm)
 		if err != nil {
 			log.Errorf("err: %s", err)
+			a.done <- err
 			return
 		}
 
 		_, err = file.WriteString(makeFile)
 		if err != nil {
 			log.Errorf("err: %s", err)
+			a.done <- err
 			return
 		}
 
 		err = os.MkdirAll(path.Join(a.AppDir, ".env"), os.ModePerm)
 		if err != nil {
 			log.Errorf("err: %s", err)
+			a.done <- err
 			return
 		}
 
@@ -80,6 +84,7 @@ func new(cmd *cobra.Command, args []string) {
 		err = toml.NewEncoder(ew).Encode(a)
 		if err != nil {
 			log.Errorf("err: %s", err)
+			a.done <- err
 			return
 		}
 		close(a.done)
