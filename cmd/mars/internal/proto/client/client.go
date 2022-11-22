@@ -24,7 +24,7 @@ var CmdClient = &cobra.Command{
 var protoPath string
 
 func init() {
-	if protoPath = os.Getenv("KRATOS_PROTO_PATH"); protoPath == "" {
+	if protoPath = os.Getenv("mars_PROTO_PATH"); protoPath == "" {
 		protoPath = "./third_party"
 	}
 	CmdClient.Flags().StringVarP(&protoPath, "proto_path", "p", protoPath, "proto path")
@@ -89,8 +89,8 @@ func generate(proto string, args []string) error {
 		input = append(input, "--proto_path="+protoPath)
 	}
 	inputExt := []string{
-		"--proto_path=" + base.KratosMod(),
-		"--proto_path=" + filepath.Join(base.KratosMod(), "third_party"),
+		"--proto_path=" + base.MarsMod(),
+		"--proto_path=" + filepath.Join(base.MarsMod(), "third_party"),
 		"--go_out=paths=source_relative:.",
 		"--go-grpc_out=paths=source_relative:.",
 		"--go-http_out=paths=source_relative:.",

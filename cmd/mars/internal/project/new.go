@@ -8,7 +8,7 @@ import (
 
 	"github.com/fengleng/mars/cmd/mars/internal/base"
 
-	"github.com/AlecAivazis/survey"
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/fatih/color"
 )
 
@@ -58,7 +58,7 @@ func (p *Project) New(ctx context.Context, dir string, layout string, branch str
 	fmt.Println(color.WhiteString("$ go generate ./..."))
 	fmt.Println(color.WhiteString("$ go build -o ./bin/ ./... "))
 	fmt.Println(color.WhiteString("$ ./bin/%s -conf ./configs\n", p.Name))
-	fmt.Println("			🤝 Thanks for using Kratos")
+	fmt.Println("			🤝 Thanks for using mars")
 	fmt.Println("	📚 Tutorial: https://go-mars.dev/docs/getting-started/start")
 	return nil
 }

@@ -12,8 +12,8 @@ func TestUnderscoreToUpperCamelCase(t *testing.T) {
 			want: "HelloWorld",
 		},
 		{
-			name: "v2_kratos_dev",
-			want: "V2KratosDev",
+			name: "v2_mars_dev",
+			want: "V2marsDev",
 		},
 		{
 			name: "www_Google_com",

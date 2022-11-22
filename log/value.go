@@ -10,7 +10,7 @@ import (
 
 var (
 	// DefaultCaller is a Valuer that returns the file and line.
-	DefaultCaller = Caller(4)
+	DefaultCaller = Caller(5)
 
 	// DefaultTimestamp is a Valuer that returns the current wallclock time.
 	DefaultTimestamp = Timestamp(time.RFC3339)

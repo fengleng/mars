@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/fengleng/mars/cmd/mars/internal/app"
 	"log"
 
 	"github.com/fengleng/mars/cmd/mars/internal/change"
@@ -14,8 +15,8 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:     "mars",
-	Short:   "Kratos: An elegant toolkit for Go microservices.",
-	Long:    `Kratos: An elegant toolkit for Go microservices.`,
+	Short:   "mars: An elegant toolkit for Go microservices.",
+	Long:    `mars: An elegant toolkit for Go microservices.`,
 	Version: release,
 }
 
@@ -25,6 +26,7 @@ func init() {
 	rootCmd.AddCommand(upgrade.CmdUpgrade)
 	rootCmd.AddCommand(change.CmdChange)
 	rootCmd.AddCommand(run.CmdRun)
+	rootCmd.AddCommand(app.CmdApp)
 }
 
 func main() {

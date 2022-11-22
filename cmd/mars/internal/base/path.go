@@ -12,7 +12,7 @@ import (
 	"github.com/fatih/color"
 )
 
-func kratosHome() string {
+func marsHome() string {
 	dir, err := os.UserHomeDir()
 	if err != nil {
 		log.Fatal(err)
@@ -26,8 +26,8 @@ func kratosHome() string {
 	return home
 }
 
-func kratosHomeWithDir(dir string) string {
-	home := path.Join(kratosHome(), dir)
+func marsHomeWithDir(dir string) string {
+	home := path.Join(marsHome(), dir)
 	if _, err := os.Stat(home); os.IsNotExist(err) {
 		if err := os.MkdirAll(home, 0o700); err != nil {
 			log.Fatal(err)

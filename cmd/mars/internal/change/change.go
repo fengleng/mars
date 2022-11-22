@@ -21,7 +21,7 @@ var (
 )
 
 func init() {
-	if repoURL = os.Getenv("KRATOS_REPO"); repoURL == "" {
+	if repoURL = os.Getenv("mars_REPO"); repoURL == "" {
 		repoURL = "https://github.com/fengleng/mars.git"
 	}
 	CmdChange.Flags().StringVarP(&repoURL, "repo-url", "r", repoURL, "github repo")

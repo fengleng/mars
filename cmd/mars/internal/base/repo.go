@@ -41,7 +41,7 @@ func repoDir(url string) string {
 func NewRepo(url string, branch string) *Repo {
 	return &Repo{
 		url:    url,
-		home:   kratosHomeWithDir("repo/" + repoDir(url)),
+		home:   marsHomeWithDir("repo/" + repoDir(url)),
 		branch: branch,
 	}
 }

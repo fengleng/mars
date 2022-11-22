@@ -30,7 +30,7 @@ var (
 )
 
 func init() {
-	if repoURL = os.Getenv("KRATOS_LAYOUT_REPO"); repoURL == "" {
+	if repoURL = os.Getenv("MARS_LAYOUT_REPO"); repoURL == "" {
 		repoURL = "https://github.com/fengleng/mars-layout.git"
 	}
 	timeout = "60s"
