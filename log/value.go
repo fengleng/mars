@@ -12,8 +12,10 @@ var (
 	// DefaultCaller is a Valuer that returns the file and line.
 	DefaultCaller = Caller(5)
 
+	defaultTs = "2006-01-02 15:04:05.0000"
+
 	// DefaultTimestamp is a Valuer that returns the current wallclock time.
-	DefaultTimestamp = Timestamp(time.RFC3339)
+	DefaultTimestamp = Timestamp(defaultTs)
 )
 
 // Valuer is returns a log value.
