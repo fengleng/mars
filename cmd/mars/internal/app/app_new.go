@@ -48,6 +48,8 @@ func new(cmd *cobra.Command, args []string) {
 		a.InitAppDir()
 		goMod := strings.Join([]string{a.GitUrl, a.AppName}, "/")
 
+		goMod = strings.TrimPrefix(strings.TrimPrefix(goMod, "https://"), "http://")
+		log.Info(goMod)
 		goModComm := exec.Command("go", "mod", "init", goMod)
 
 		goModComm.Dir = a.AppDir
@@ -80,7 +82,7 @@ func new(cmd *cobra.Command, args []string) {
 			return
 		}
 
-		ew, err := os.OpenFile(path.Join(a.AppDir, ".env", ""), os.O_CREATE|os.O_RDWR, os.ModePerm)
+		ew, err := os.OpenFile(path.Join(a.AppDir, ".env", "env.toml"), os.O_CREATE|os.O_RDWR, os.ModePerm)
 		err = toml.NewEncoder(ew).Encode(a)
 		if err != nil {
 			log.Errorf("err: %s", err)
@@ -105,6 +107,6 @@ func new(cmd *cobra.Command, args []string) {
 }
 
 func (a *App) InitAppDir() {
-	a.AppDir = filepath.Join(app.Dir, app.AppName)
+	a.AppDir = filepath.Join(app.dir, app.AppName)
 	a.tryNewDir(a.AppDir)
 }

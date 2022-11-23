@@ -22,16 +22,11 @@ func init() {
 }
 
 type App struct {
-	Dir     string `json:"dir" toml:"dir"`
+	dir     string
 	AppName string `json:"app_name" toml:"app_name"`
 	AppDir  string `toml:"app_dir" `
 
-	//Front   string `json:"Front"`
-	//FrontPath   string
-	//Backend string `json:"Backend"`
-	//BackendPath string
 	Proto string `json:"Proto" toml:"proto"`
-	//ProtoPath   string
 
 	GitUrl string `json:"git_url" toml:"git_url"`
 
@@ -46,7 +41,7 @@ func init() {
 		panic(err)
 	}
 	app = &App{
-		Dir:   wd,
+		dir:   wd,
 		Proto: "../proto",
 		done:  make(chan error),
 	}
@@ -56,8 +51,8 @@ func init() {
 	}
 
 	CmdApp.Flags().StringVarP(&app.GitUrl, "git-url", "g", app.GitUrl, "git url")
-	CmdApp.Flags().StringVarP(&app.Proto, "proto", "p", app.Proto, "proto Dir")
-	//CmdApp.Flags().StringVarP(&app.Backend, "backend", "b", app.Backend, "Backend Dir")
+	CmdApp.Flags().StringVarP(&app.Proto, "proto", "p", app.Proto, "proto dir")
+	//CmdApp.Flags().StringVarP(&app.Backend, "backend", "b", app.Backend, "Backend dir")
 	CmdApp.Flags().StringVar(&app.AppName, "app", "", "app name")
 }
 

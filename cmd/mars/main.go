@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/fengleng/mars/cmd/mars/internal/app"
-	"log"
 
 	"github.com/fengleng/mars/cmd/mars/internal/change"
 	"github.com/fengleng/mars/cmd/mars/internal/project"
@@ -10,6 +9,7 @@ import (
 	"github.com/fengleng/mars/cmd/mars/internal/run"
 	"github.com/fengleng/mars/cmd/mars/internal/upgrade"
 
+	"github.com/fengleng/mars/log"
 	"github.com/spf13/cobra"
 )
 
@@ -30,6 +30,9 @@ func init() {
 }
 
 func main() {
+
+	log.SetLogger(log.With(log.DefaultLogger, "caller:", log.Caller(4)))
+
 	if err := rootCmd.Execute(); err != nil {
 		log.Fatal(err)
 	}
