@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
+	"github.com/fengleng/mars/registry"
 	pb "github.com/go-chassis/cari/discovery"
 	"github.com/go-chassis/sc-client"
-	"github.com/fengleng/mars/registry"
 	"github.com/gofrs/uuid"
 )
 
