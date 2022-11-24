@@ -1,4 +1,4 @@
-package config
+package polaris
 
 import (
 	"encoding/json"

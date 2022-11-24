@@ -25,6 +25,8 @@ var (
 	id, _ = os.Hostname()
 )
 
+//var app *mars.App
+
 func init() {
 	flag.StringVar(&flagconf, "conf", "./config.yaml", "config path, eg: -conf config.yaml")
 }
