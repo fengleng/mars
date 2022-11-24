@@ -1,4 +1,4 @@
-package kratos
+package mars
 
 import (
 	"context"
