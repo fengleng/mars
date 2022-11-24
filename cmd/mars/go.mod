@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.6
+	github.com/BurntSushi/toml v0.3.1
 	github.com/emicklei/proto v1.10.0
 	github.com/fatih/color v1.13.0
 	github.com/fengleng/mars v0.0.0-20221122152503-45a591c6b765

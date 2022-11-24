@@ -81,7 +81,7 @@ func new(cmd *cobra.Command, args []string) {
 			a.done <- err
 			return
 		}
-
+		os.MkdirAll(path.Join(a.AppDir, "pkg"), os.ModePerm)
 		ew, err := os.OpenFile(path.Join(a.AppDir, ".env", "env.toml"), os.O_CREATE|os.O_RDWR, os.ModePerm)
 		err = toml.NewEncoder(ew).Encode(a)
 		if err != nil {

@@ -24,7 +24,10 @@ func init() {
 type App struct {
 	dir     string
 	AppName string `json:"app_name" toml:"app_name"`
-	AppDir  string `toml:"app_dir" `
+
+	ServiceName string
+
+	AppDir string `toml:"app_dir" `
 
 	Proto string `json:"Proto" toml:"proto"`
 

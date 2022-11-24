@@ -16,27 +16,27 @@ option java_multiple_files = true;
 option java_package = "{{.JavaPackage}}";
 
 service {{.Service}} {
-	rpc Create{{.Service}} (Create{{.Service}}Request) returns (Create{{.Service}}Reply);
-	rpc Update{{.Service}} (Update{{.Service}}Request) returns (Update{{.Service}}Reply);
-	rpc Delete{{.Service}} (Delete{{.Service}}Request) returns (Delete{{.Service}}Reply);
-	rpc Get{{.Service}} (Get{{.Service}}Request) returns (Get{{.Service}}Reply);
-	rpc List{{.Service}} (List{{.Service}}Request) returns (List{{.Service}}Reply);
+	rpc Create{{.Service}} (Create{{.Service}}Req) returns (Create{{.Service}}Rsp);
+	rpc Update{{.Service}} (Update{{.Service}}Req) returns (Update{{.Service}}Rsp);
+	rpc Delete{{.Service}} (Delete{{.Service}}Req) returns (Delete{{.Service}}Rsp);
+	rpc Get{{.Service}} (Get{{.Service}}Req) returns (Get{{.Service}}Rsp);
+	rpc List{{.Service}} (List{{.Service}}Req) returns (List{{.Service}}Rsp);
 }
 
-message Create{{.Service}}Request {}
-message Create{{.Service}}Reply {}
+message Create{{.Service}}Req {}
+message Create{{.Service}}Rsp {}
 
-message Update{{.Service}}Request {}
-message Update{{.Service}}Reply {}
+message Update{{.Service}}Req {}
+message Update{{.Service}}Rsp {}
 
-message Delete{{.Service}}Request {}
-message Delete{{.Service}}Reply {}
+message Delete{{.Service}}Req {}
+message Delete{{.Service}}Rsp {}
 
-message Get{{.Service}}Request {}
-message Get{{.Service}}Reply {}
+message Get{{.Service}}Req {}
+message Get{{.Service}}Rsp {}
 
-message List{{.Service}}Request {}
-message List{{.Service}}Reply {}
+message List{{.Service}}Req {}
+message List{{.Service}}Rsp {}
 `
 
 func (p *Proto) execute() ([]byte, error) {
