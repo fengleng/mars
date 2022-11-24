@@ -1,14 +1,20 @@
-package main
+package app
+
+import (
+	"github.com/fengleng/mars/log"
+	"os"
+	"path"
+)
+
+var appMain = `package main
 
 import (
 	"flag"
+	"github.com/fengleng/test1/d1/internal/conf"
 	"os"
 
 	"github.com/fengleng/mars"
-	"github.com/fengleng/mars/config"
-	"github.com/fengleng/mars/config/file"
 	"github.com/fengleng/mars/log"
-	"github.com/fengleng/mars/middleware/tracing"
 	"github.com/fengleng/mars/transport/grpc"
 	"github.com/fengleng/mars/transport/http"
 	//_ "go.uber.org/automaxprocs"
@@ -19,8 +25,7 @@ var (
 	// Name is the name of the compiled software.
 	Name string
 
-	// flagconf is the config flag.
-	flagconf string
+
 
 	id, _ = os.Hostname()
 )
@@ -46,33 +51,8 @@ func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server) *mars.App {
 }
 
 func main() {
-	flag.Parse()
-	logger := log.With(log.NewStdLogger(os.Stdout),
-		"ts", log.DefaultTimestamp,
-		"caller", log.DefaultCaller,
-		"service.id", id,
-		"service.name", Name,
-		"service.version", Version,
-		"trace.id", tracing.TraceID(),
-		"span.id", tracing.SpanID(),
-	)
-	c := config.New(
-		config.WithSource(
-			file.NewSource(flagconf),
-		),
-	)
-	defer c.Close()
 
-	if err := c.Load(); err != nil {
-		panic(err)
-	}
-
-	var bc svcConf.Bootstrap
-	if err := c.Scan(&bc); err != nil {
-		panic(err)
-	}
-
-	app, cleanup, err := wireApp(bc.Server, bc.Data, logger)
+	app, cleanup, err := wireApp(conf.Conf)
 	if err != nil {
 		panic(err)
 	}
@@ -81,5 +61,24 @@ func main() {
 	// start and wait for stop signal
 	if err := app.Run(); err != nil {
 		panic(err)
+	}
+}
+`
+
+func (a *App) initAppMain() {
+	to := path.Join(a.AppDir, a.ServiceName, "cmd", "main.go")
+	_, err := os.Stat(to)
+	if !os.IsNotExist(err) {
+		return
+	}
+	file, err := os.OpenFile(to, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
+	}
+	_, err = file.Write([]byte(appMain))
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
 	}
 }

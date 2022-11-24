@@ -38,9 +38,12 @@ func add(cmd *cobra.Command, args []string) {
 		}
 	}
 	a.initServiceDir()
-
+	a.initAppInternalConf()
+	a.initAppMain()
+	a.initAppConf()
+	a.initAppConfFile()
+	a.initAppWire()
 	a.marsLog()
-
 }
 
 func (a *App) initServiceDir() {
@@ -75,7 +78,7 @@ func (a *App) initServiceDir() {
 		log.Errorf("err: %s", err)
 		os.Exit(1)
 	}
-	err = os.MkdirAll(path.Join(a.AppDir, a.ServiceName, "internal", "mars-log"), os.ModePerm)
+	err = os.MkdirAll(path.Join(a.AppDir, a.ServiceName, "internal", "conf"), os.ModePerm)
 	if err != nil {
 		log.Errorf("err: %s", err)
 		os.Exit(1)
