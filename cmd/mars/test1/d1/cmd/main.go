@@ -28,7 +28,7 @@ var (
 //var app *mars.App
 
 func init() {
-	flag.StringVar(&flagconf, "conf", "./config.yaml", "config path, eg: -conf config.yaml")
+	flag.StringVar(&flagconf, "svcConf", "./config.yaml", "config path, eg: -svcConf config.yaml")
 }
 
 func newApp(logger log.Logger, gs *grpc.Server, hs *http.Server) *mars.App {
@@ -67,7 +67,7 @@ func main() {
 		panic(err)
 	}
 
-	var bc conf.Bootstrap
+	var bc svcConf.Bootstrap
 	if err := c.Scan(&bc); err != nil {
 		panic(err)
 	}
