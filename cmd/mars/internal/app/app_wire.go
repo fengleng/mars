@@ -1,7 +1,9 @@
 package app
 
 import (
+	"bytes"
 	"github.com/fengleng/mars/log"
+	"html/template"
 	"os"
 	"path"
 )
@@ -15,18 +17,16 @@ package main
 
 import (
 	"github.com/fengleng/mars"
-	"github.com/fengleng/mars-layout/internal/biz"
-	"github.com/fengleng/mars-layout/internal/data"
-	"github.com/fengleng/mars-layout/internal/server"
-	"github.com/fengleng/mars-layout/internal/service"
 	"github.com/fengleng/mars/config"
+	"github.com/fengleng/mars/log"
 
+	myWire "{{.GoMod}}/{{.ServiceName}}/internal/wire"
 	"github.com/google/wire"
 )
 
 // wireApp init mars application.
-func wireApp(conf config.Config) (*mars.App, func(), error) {
-	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, newApp))
+func wireApp(conf config.Config,logger log.Logger) (*mars.App, func(), error) {
+	panic(wire.Build(myWire.ProviderSet, newApp))
 }
 `
 
@@ -36,12 +36,24 @@ func (a *App) initAppWire() {
 	if !os.IsNotExist(err) {
 		return
 	}
+	tmpl, err := template.New("mars-log").Parse(appWire)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
+	}
+	buf := &bytes.Buffer{}
+	err = tmpl.Execute(buf, a)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
+	}
+	bytes := buf.Bytes()
 	file, err := os.OpenFile(to, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 	if err != nil {
 		log.Errorf("err: %s", err)
 		os.Exit(1)
 	}
-	_, err = file.Write([]byte(appWire))
+	_, err = file.Write(bytes)
 	if err != nil {
 		log.Errorf("err: %s", err)
 		os.Exit(1)

@@ -32,6 +32,7 @@ type App struct {
 	Proto string `json:"Proto" toml:"proto"`
 
 	GitUrl string `json:"git_url" toml:"git_url"`
+	GoMod  string `json:"go_mod"`
 
 	done chan error `toml:"done"`
 }

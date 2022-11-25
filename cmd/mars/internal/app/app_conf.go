@@ -11,32 +11,89 @@ import (
 var appConf = `package main
 
 import (
+	"flag"
+	"{{.GoMod}}/{{.ServiceName}}/internal/conf"
+	"{{.GoMod}}/{{.ServiceName}}/internal/server"
+	"github.com/fengleng/mars/config"
+	"github.com/fengleng/mars/config/file"
 	"github.com/fengleng/mars/log"
-	"github.com/fengleng/mars/middleware/tracing"
-	"os"
+	"github.com/fengleng/mars/pkg/env"
+	"github.com/fengleng/mars/plugin/config/etcd"
+	clientV3 "go.etcd.io/etcd/client/v3"
+	"time"
 )
 
 var (
 	Version string
+	flagConf string
 )
 
+
 func init() {
-	hostname, err := os.Hostname()
+	flag.StringVar(&flagConf, "svcConf", "./config.yaml", "config path, eg: -svcConf config.yaml")
+}
+
+func init() {
+	initConf()
+
+	server.Init()
+}
+
+
+func initConf()  {
+	conf.SvcConf = config.New(
+		config.WithSource(
+			file.NewSource(flagConf),
+		),
+	)
+
+	values, err := conf.SvcConf.Value("etcd").Slice()
 	if err !=nil {
 		log.Errorf("err: %s",err)
-		return 
+		panic(err)
 	}
-	logger := log.With(log.NewStdLogger(os.Stdout),
-		"ts", log.DefaultTimestamp,
-		"caller", log.DefaultCaller,
-		"hostname", hostname,
-		"app.name", "test1",
-		"app.service", "d2",
-		"app.service.version", Version,
-		"trace.id", tracing.TraceID(),
-		"span.id", tracing.SpanID(),
-	)
-	log.SetLogger(logger)
+
+	var endPointList []string
+	for _, value := range values {
+		s, err := value.String()
+		if err !=nil {
+			log.Errorf("err: %s",err)
+			panic(err)
+		}
+		endPointList = append(endPointList,s)
+	}
+
+	client, err := clientV3.New(clientV3.Config{
+		Endpoints:            endPointList,
+		DialTimeout:          3 * time.Second,
+		DialKeepAliveTimeout: 3 * time.Second,
+	})
+	if err !=nil {
+		log.Errorf("err: %s",err)
+		panic(err)
+	}
+
+	source, err := etcd.New(client)
+	if err !=nil {
+		log.Errorf("err: %s",err)
+		panic(err)
+	}
+	conf.Conf = config.New(config.WithSource(source))
+}
+
+func getLogLevel() log.Level {
+	value := conf.SvcConf.Value("env")
+	s, err := value.String()
+	if err !=nil {
+		log.Errorf("err: %s",err)
+		panic(err)
+	}
+	switch s {
+	case env.Beta,env.Staging:
+		return log.LevelDebug
+	default:
+		return log.LevelInfo
+	}
 }
 `
 

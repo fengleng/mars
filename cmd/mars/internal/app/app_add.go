@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/BurntSushi/toml"
+	"github.com/fengleng/mars/cmd/mars/internal/base"
 	"github.com/fengleng/mars/log"
 	"github.com/spf13/cobra"
 	"os"
@@ -37,12 +38,21 @@ func add(cmd *cobra.Command, args []string) {
 			return
 		}
 	}
+
+	modulePath, err := base.ModulePath("./go.mod")
+	if err != nil {
+		log.Errorf("err: %s", err)
+		return
+	}
+	a.GoMod = modulePath
+
 	a.initServiceDir()
 	a.initAppInternalConf()
 	a.initAppMain()
 	a.initAppConf()
 	a.initAppConfFile()
 	a.initAppWire()
+	a.initInternal()
 	a.marsLog()
 }
 
@@ -79,6 +89,16 @@ func (a *App) initServiceDir() {
 		os.Exit(1)
 	}
 	err = os.MkdirAll(path.Join(a.AppDir, a.ServiceName, "internal", "conf"), os.ModePerm)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
+	}
+	err = os.MkdirAll(path.Join(a.AppDir, a.ServiceName, "internal", "server"), os.ModePerm)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
+	}
+	err = os.MkdirAll(path.Join(a.AppDir, a.ServiceName, "internal", "wire"), os.ModePerm)
 	if err != nil {
 		log.Errorf("err: %s", err)
 		os.Exit(1)

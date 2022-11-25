@@ -17,22 +17,27 @@ import (
 	"os"
 )
 
+var (
+	logger log.Logger
+)
+
 func init() {
 	hostname, err := os.Hostname()
-	if err !=nil {
-		log.Errorf("err: %s",err)
-		return 
+	if err != nil {
+		log.Errorf("err: %s", err)
+		return
 	}
-	logger := log.With(log.NewStdLogger(os.Stdout),
+	logger = log.With(log.NewStdLogger(os.Stdout),
 		"ts", log.DefaultTimestamp,
 		"caller", log.DefaultCaller,
 		"hostname", hostname,
-		"app.name", "{{.AppName}}",
-		"app.service", "{{.ServiceName}}",
+		"app.name", "test1",
+		"app.service", "d2",
 		"app.service.version", Version,
 		"trace.id", tracing.TraceID(),
 		"span.id", tracing.SpanID(),
 	)
+	logger = log.NewFilter(logger, log.FilterLevel(getLogLevel()))
 	log.SetLogger(logger)
 }`
 
