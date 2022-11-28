@@ -1,8 +1,10 @@
 package app_base
 
 import (
+	"bytes"
 	"github.com/fengleng/mars/log"
 	"go/format"
+	"html/template"
 	"os"
 	"path"
 )
@@ -25,6 +27,8 @@ var (
 	SvcConf config.Config
 
 	flagConf string
+	
+	configPath string = "config/{{.ServiceName}}.json"
 )
 
 func init() {
@@ -38,20 +42,26 @@ func init() {
 		),
 	)
 
-	values, err := SvcConf.Value("etcd").Slice()
+	err := SvcConf.Load()
 	if err !=nil {
 		log.Errorf("err: %s",err)
+		panic(err)
+	}
+
+	values, err := SvcConf.Value("etcd").Slice()
+	if err != nil {
+		log.Errorf("err: %s", err)
 		panic(err)
 	}
 
 	var endPointList []string
 	for _, value := range values {
 		s, err := value.String()
-		if err !=nil {
-			log.Errorf("err: %s",err)
+		if err != nil {
+			log.Errorf("err: %s", err)
 			panic(err)
 		}
-		endPointList = append(endPointList,s)
+		endPointList = append(endPointList, s)
 	}
 
 	client, err := clientV3.New(clientV3.Config{
@@ -59,17 +69,22 @@ func init() {
 		DialTimeout:          3 * time.Second,
 		DialKeepAliveTimeout: 3 * time.Second,
 	})
-	if err !=nil {
-		log.Errorf("err: %s",err)
+	if err != nil {
+		log.Errorf("err: %s", err)
 		panic(err)
 	}
 
-	source, err := etcd.New(client)
+	source, err := etcd.New(client,etcd.WithPath(configPath))
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
+	}
+	Conf = config.New(config.WithSource(source))
+	err = Conf.Load()
 	if err !=nil {
 		log.Errorf("err: %s",err)
 		panic(err)
 	}
-	Conf = config.New(config.WithSource(source))
 }
 `
 
@@ -82,17 +97,30 @@ func (a *App) InitAppInternalConf() {
 	file, err := os.OpenFile(to, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 	if err != nil {
 		log.Errorf("err: %s", err)
-		os.Exit(1)
+		panic(err)
+
 	}
 
-	bytes, err := format.Source([]byte(appInternalConf))
+	tmpl, err := template.New("mars_internal_conf").Parse(appInternalConf)
 	if err != nil {
 		log.Errorf("err: %s", err)
-		os.Exit(1)
+		panic(err)
+	}
+	buf := &bytes.Buffer{}
+	err = tmpl.Execute(buf, a)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
+	}
+	bytes := buf.Bytes()
+	bytes, err = format.Source(bytes)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
 	}
 	_, err = file.Write(bytes)
 	if err != nil {
 		log.Errorf("err: %s", err)
-		os.Exit(1)
+		panic(err)
 	}
 }

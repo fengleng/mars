@@ -35,7 +35,7 @@ func (p *Proto) Generate() error {
 	to := p.Path
 	name := path.Join(to, p.Name+".proto")
 	if _, err := os.Stat(name); !os.IsNotExist(err) {
-		return fmt.Errorf("%s already exists", p.Name)
+		return fmt.Errorf("%s.proto already exists", p.Name)
 	}
 	return os.WriteFile(name, body, os.ModePerm)
 }

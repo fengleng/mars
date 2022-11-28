@@ -6,13 +6,13 @@ import (
 	"path"
 )
 
-var appConfFile = `port = 3333
-
-etcd = ["127.0.0.1:3306"]
+var appConfFile = `port: 3333
+etcd:
+  - 127.0.0.1:2379
 `
 
 func (a *App) InitAppConfFile() {
-	to := path.Join(a.AppDir, a.ServiceName, "cmd", "config.toml")
+	to := path.Join(a.AppDir, a.ServiceName, "cmd", "config.yaml")
 	_, err := os.Stat(to)
 	if !os.IsNotExist(err) {
 		return

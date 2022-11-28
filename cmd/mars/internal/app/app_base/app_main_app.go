@@ -25,7 +25,7 @@ func newApp() (*mars.App,func()) {
 
 	return mars.New(
 		mars.ID(id),
-		mars.Name(Name),
+		mars.Name(ServiceName),
 		mars.Version(Version),
 		mars.Metadata(map[string]string{}),
 		mars.Logger(logger),

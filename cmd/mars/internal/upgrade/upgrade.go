@@ -21,7 +21,7 @@ func Run(cmd *cobra.Command, args []string) {
 	err := base.GoInstall(
 		"github.com/fengleng/mars/cmd/mars@latest",
 		"github.com/fengleng/mars/cmd/protoc-gen-mars-http@latest",
-		"github.com/fengleng/mars/cmd/protoc-gen-go-errors@latest",
+		"github.com/fengleng/mars/cmd/protoc-gen-mars-errors@latest",
 		"google.golang.org/protobuf/cmd/protoc-gen-go@latest",
 		"google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
 		"github.com/google/gnostic/cmd/protoc-gen-openapi@latest",
