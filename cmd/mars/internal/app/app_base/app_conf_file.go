@@ -1,4 +1,4 @@
-package app
+package app_base
 
 import (
 	"github.com/fengleng/mars/log"
@@ -11,7 +11,7 @@ var appConfFile = `port = 3333
 etcd = ["127.0.0.1:3306"]
 `
 
-func (a *App) initAppConfFile() {
+func (a *App) InitAppConfFile() {
 	to := path.Join(a.AppDir, a.ServiceName, "cmd", "config.toml")
 	_, err := os.Stat(to)
 	if !os.IsNotExist(err) {

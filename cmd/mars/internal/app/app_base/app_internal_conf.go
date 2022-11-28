@@ -1,53 +1,44 @@
-package app
+package app_base
 
 import (
-	"bytes"
 	"github.com/fengleng/mars/log"
-	"html/template"
+	"go/format"
 	"os"
 	"path"
 )
 
-var appConf = `package main
+var appInternalConf = `package conf
 
 import (
 	"flag"
-	"{{.GoMod}}/{{.ServiceName}}/internal/conf"
-	"{{.GoMod}}/{{.ServiceName}}/internal/server"
 	"github.com/fengleng/mars/config"
 	"github.com/fengleng/mars/config/file"
 	"github.com/fengleng/mars/log"
-	"github.com/fengleng/mars/pkg/env"
 	"github.com/fengleng/mars/plugin/config/etcd"
 	clientV3 "go.etcd.io/etcd/client/v3"
 	"time"
 )
 
 var (
-	Version string
+	Conf config.Config
+
+	SvcConf config.Config
+
 	flagConf string
 )
-
 
 func init() {
 	flag.StringVar(&flagConf, "svcConf", "./config.yaml", "config path, eg: -svcConf config.yaml")
 }
 
 func init() {
-	initConf()
-
-	server.Init()
-}
-
-
-func initConf()  {
-	conf.SvcConf = config.New(
+	SvcConf = config.New(
 		config.WithSource(
 			file.NewSource(flagConf),
 		),
 	)
 
-	values, err := conf.SvcConf.Value("etcd").Slice()
+	values, err := SvcConf.Value("etcd").Slice()
 	if err !=nil {
 		log.Errorf("err: %s",err)
 		panic(err)
@@ -78,45 +69,23 @@ func initConf()  {
 		log.Errorf("err: %s",err)
 		panic(err)
 	}
-	conf.Conf = config.New(config.WithSource(source))
-}
-
-func getLogLevel() log.Level {
-	value := conf.SvcConf.Value("env")
-	s, err := value.String()
-	if err !=nil {
-		log.Errorf("err: %s",err)
-		panic(err)
-	}
-	switch s {
-	case env.Beta,env.Staging:
-		return log.LevelDebug
-	default:
-		return log.LevelInfo
-	}
+	Conf = config.New(config.WithSource(source))
 }
 `
 
-func (a *App) initAppConf() {
-	to := path.Join(a.AppDir, a.ServiceName, "cmd", "conf.go")
+func (a *App) InitAppInternalConf() {
+	to := path.Join(a.AppDir, a.ServiceName, "internal", "conf", "conf.go")
 	_, err := os.Stat(to)
 	if !os.IsNotExist(err) {
 		return
 	}
-	tmpl, err := template.New("mars-conf").Parse(appConf)
-	if err != nil {
-		log.Errorf("err: %s", err)
-		os.Exit(1)
-	}
-	buf := &bytes.Buffer{}
-	err = tmpl.Execute(buf, a)
-	if err != nil {
-		log.Errorf("err: %s", err)
-		os.Exit(1)
-	}
-	bytes := buf.Bytes()
-
 	file, err := os.OpenFile(to, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		os.Exit(1)
+	}
+
+	bytes, err := format.Source([]byte(appInternalConf))
 	if err != nil {
 		log.Errorf("err: %s", err)
 		os.Exit(1)

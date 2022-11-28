@@ -1,4 +1,4 @@
-package app
+package app_base
 
 var makeFile = `GOHOSTOS:=$(shell go env GOHOSTOS)
 GOPATH:=$(shell go env GOPATH)
@@ -7,8 +7,8 @@ VERSION=$(shell git describe --tags --always)
 ifeq ($(GOHOSTOS), windows)
 	#to see https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/find.
 	#changed to use git-bash.exe to run find cli or other cli friendly, caused of every developer has a Git.
-	#Git_Bash= $(subst cmd\,bin\bash.exe,$(dir $(shell where git)))
-	Git_Bash=$(subst \,/,$(subst cmd\,bin\bash.exe,$(dir $(shell where git | grep cmd))))
+	#Git_Bash= $(subst cmd\,bin\bash.exe,$(Dir $(shell where git)))
+	Git_Bash=$(subst \,/,$(subst cmd\,bin\bash.exe,$(Dir $(shell where git | grep cmd))))
 	INTERNAL_PROTO_FILES=$(shell $(Git_Bash) -c "find internal -name *.proto")
 	API_PROTO_FILES=$(shell $(Git_Bash) -c "find api -name *.proto")
 else

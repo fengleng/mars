@@ -1,4 +1,4 @@
-package app
+package app_base
 
 import (
 	"bytes"
@@ -9,52 +9,43 @@ import (
 	"path"
 )
 
-var biz = `package biz
-
-import "{{.GoMod}}/{{.ServiceName}}/internal"
-
-// ProviderSet is biz providers.
-func init() {
-	internal.RegisterProvider()
-}`
-
-var data = `package data
-
-import "{{.GoMod}}/{{.ServiceName}}/internal"
-
-// ProviderSet is data providers.
-func init() {
-	internal.RegisterProvider()
-}`
-
-var server = `package server
-
-import "{{.GoMod}}/{{.ServiceName}}/internal"
-
-// ProviderSet is server providers.
-func init() {
-	internal.RegisterProvider(NewGRPCServer,NewHTTPServer)
-}`
-
-var service = `package service
-
-import "{{.GoMod}}/{{.ServiceName}}/internal"
-
-// ProviderSet is service providers.
-func init() {
-	internal.RegisterProvider()
-}`
-
-var myWire = `package wire
-
-import (
-	"{{.GoMod}}/{{.ServiceName}}/internal/server"
-	"github.com/google/wire"
-)
-
-var ProviderSet = wire.NewSet(server.NewGRPCServer,server.NewHTTPServer)`
+//var biz = `package biz
+//import "{{.GoMod}}/{{.ServiceName}}/internal"
+//// ProviderSet is biz providers.
+//func init() {
+//	internal.RegisterProvider()
+//}`
+//
+//var data = `package data
+//import "{{.GoMod}}/{{.ServiceName}}/internal"
+//// ProviderSet is data providers.
+//func init() {
+//	internal.RegisterProvider()
+//}`
+//
+//var server = `package server
+//import "{{.GoMod}}/{{.ServiceName}}/internal"
+//// ProviderSet is server providers.
+//func init() {
+//	internal.RegisterProvider(NewGRPCServer,NewHTTPServer)
+//}`
+//
+//var service = `package service
+//import "{{.GoMod}}/{{.ServiceName}}/internal"
+//// ProviderSet is service providers.
+//func init() {
+//	internal.RegisterProvider()
+//}`
+//
+//var myWire = `package wire
+//import (
+//	"{{.GoMod}}/{{.ServiceName}}/internal/server"
+//	"github.com/google/wire"
+//)
+//var ProviderSet = wire.NewSet(server.NewGRPCServer,server.NewHTTPServer)`
 
 var serverInit = `package server
+
 import (
 	"{{.GoMod}}/{{.ServiceName}}/internal/conf"
 	"github.com/fengleng/mars/log"
@@ -62,25 +53,21 @@ import (
 	"net"
 )
 
-func Init()  {
+func init()  {
 	value := conf.Conf.Value("port")
 	if value==nil {
 		panic("invalid port!")
 	}
-
 	addr, err := value.String()
 	if err !=nil {
 		log.Errorf("err: %s",err)
 		panic("invalid port!")
 	}
-
 	l, err := net.Listen("tcp", addr)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	m := cmux.New(l)
-
 	initGRPCServer(m)
 	initHTTPServer(m)
 }`
@@ -98,13 +85,11 @@ import (
 
 var (
 	httpServer *http.Server
-
 	httpL net.Listener
 )
 
 func initHTTPServer(m cmux.CMux) {
 	httpL = m.Match(cmux.HTTP1Fast())
-
 	httpServer = newHTTPServer(conf.Conf)
 }
 
@@ -138,13 +123,11 @@ import (
 
 var (
 	gRPCServer *grpc.Server
-
 	grpcL net.Listener
 )
 
 func initGRPCServer(m cmux.CMux) {
 	grpcL = m.Match(cmux.HTTP2HeaderField("content-type", "application/grpc"))
-
 	gRPCServer = newGRPCServer(conf.Conf)
 }
 
@@ -165,27 +148,22 @@ func NewGRPCServer(c config.Config) *grpc.Server {
 }`
 
 var internalInitGo = `package internal
-
 import "github.com/google/wire"
-
 var ProviderSet wire.ProviderSet
-
 var providerList []interface{}
-
 func RegisterProvider(providers ...interface{})  {
 	providerList = append(providerList,providers...)
 }
-
 func init() {
 	ProviderSet = wire.NewSet(providerList...)
 }
 `
 
-func (a *App) initInternal() {
+func (a *App) InitInternal() {
 	//a.wireInit("biz","wire.go",biz)
 	//a.wireInit("data","wire.go",data)
 	//a.wireInit("service","wire.go",service)
-	a.wireInit("wire", "wire.go", myWire)
+	//a.wireInit("wire", "wire.go", myWire)
 
 	//a.internalWireInit()
 
