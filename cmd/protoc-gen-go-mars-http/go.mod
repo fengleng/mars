@@ -1,4 +1,4 @@
-module github.com/fengleng/mars/cmd/protoc-gen-mars-http
+module github.com/fengleng/mars/cmd/protoc-gen-go-mars-http
 
 go 1.17
 
