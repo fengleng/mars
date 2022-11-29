@@ -19,9 +19,9 @@ var CmdUpgrade = &cobra.Command{
 // Run upgrade the mars tools.
 func Run(cmd *cobra.Command, args []string) {
 	err := base.GoInstall(
-		"github.com/fengleng/mars/cmd/mars@latest",
-		"github.com/fengleng/mars/cmd/protoc-gen-go-mars-http@latest",
-		"github.com/fengleng/mars/cmd/protoc-gen-go-mars-errors@latest",
+		"github.com/fengleng/mars/cmd/mars@master",
+		"github.com/fengleng/mars/cmd/protoc-gen-go-mars-http@master",
+		"github.com/fengleng/mars/cmd/protoc-gen-go-mars-errors@master",
 		"google.golang.org/protobuf/cmd/protoc-gen-go@latest",
 		"google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest",
 		"github.com/google/gnostic/cmd/protoc-gen-openapi@latest",
