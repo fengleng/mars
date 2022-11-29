@@ -58,5 +58,5 @@ func MarsMod() string {
 		return filepath.Join(cachePath, path)
 	}
 	// $GOPATH/src/github.com/fengleng/mars
-	return filepath.Join(gopath, "src", "github.com", "go-mars", "mars")
+	return filepath.Join(gopath, "src", "github.com", "fengleng", "mars")
 }

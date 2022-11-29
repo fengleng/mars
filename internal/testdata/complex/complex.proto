@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/fengleng/mars/cmd/protoc-gen-mars-http/internal/encoding/complex/;complex";
+option go_package = "github.com/fengleng/mars/cmd/protoc-gen-go-mars-http/internal/encoding/complex/;complex";
 
 package testproto;
 

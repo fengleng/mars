@@ -1,4 +1,4 @@
-module github.com/fengleng/mars/cmd/protoc-gen-mars-errors
+module github.com/fengleng/mars/cmd/protoc-gen-go-mars-errors
 
 go 1.17
 

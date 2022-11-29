@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/fengleng/mars/cmd/protoc-gen-mars-errors/errors"
+	"github.com/fengleng/mars/cmd/protoc-gen-go-mars-errors/errors"
 )
 
 const (

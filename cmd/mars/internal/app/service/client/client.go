@@ -44,18 +44,6 @@ func run(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	//clientGoPath := a.ProtoClientGo()
-	//var (
-	//	err   error
-	//	proto string
-	////	strings.TrimSpace(args[0])
-	//)
-	//if len(args) == 0 {
-	//	//fmt.Println("Please enter the proto file or directory")
-	//
-	//	return
-	//}
-
 	if err = look("protoc-gen-go", "protoc-gen-go-grpc", "protoc-gen-go-mars-http", "protoc-gen-go-mars-errors", "protoc-gen-openapi"); err != nil {
 		// update the mars plugins
 		cmd := exec.Command("mars", "upgrade")
@@ -77,6 +65,11 @@ func run(cmd *cobra.Command, args []string) {
 			return
 		}
 		err = walk(protoColPath, args)
+		if err != nil {
+			log.Errorf("err: %s", err)
+			return
+		}
+		return
 	}
 
 	var protoServiceList []string
@@ -117,33 +110,6 @@ func run(cmd *cobra.Command, args []string) {
 			}
 		}
 	}
-	//
-	//fileInfo, err := os.Stat(proto)
-	//if err !=nil {
-	//	if os.IsNotExist(err) {
-	//		proto2 := proto+".proto"
-	//		_, err := os.Stat(proto2)
-	//		if err !=nil {
-	//			log.Errorf("err: %s",err)
-	//			log.Errorf("invalid proto %s",proto)
-	//			return
-	//		}
-	//		err = generate(proto, args)
-	//	}
-	//	log.Errorf("err: %s",err)
-	//	return
-	//}
-	//if fileInfo.IsDir() {
-	//	err = walk(proto, args)
-	//}
-	//if strings.HasSuffix(proto, ".proto") {
-	//	err = generate(proto, args)
-	//} else {
-	//	err = walk(proto, args)
-	//}
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
 }
 
 func look(name ...string) error {
@@ -156,9 +122,6 @@ func look(name ...string) error {
 }
 
 func walk(dir string, args []string) error {
-	if dir == "" {
-		dir = "."
-	}
 	return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		if ext := filepath.Ext(path); ext != ".proto" || strings.HasPrefix(path, "third_party") {
 			return nil
@@ -169,8 +132,11 @@ func walk(dir string, args []string) error {
 
 // generate is used to execute the generate command for the specified proto file
 func generate(proto string, args []string) error {
+	a := app_base.Instance
 	input := []string{
-		"--proto_path=.",
+		"--proto_path=" + a.ProtoClientGo(),
+		"--proto_path=" + a.ProtoCol(),
+		"--proto_path=" + filepath.Join(a.ProtoCol(), "third_party"),
 	}
 	if pathExists(protoPath) {
 		input = append(input, "--proto_path="+protoPath)
@@ -178,17 +144,17 @@ func generate(proto string, args []string) error {
 	inputExt := []string{
 		"--proto_path=" + base.MarsMod(),
 		"--proto_path=" + filepath.Join(base.MarsMod(), "third_party"),
-		"--go_out=paths=source_relative:.",
-		"--go-grpc_out=paths=source_relative:.",
-		"--go-mars-http_out=paths=source_relative:.",
-		"--go-mars-errors_out=paths=source_relative:.",
-		"--openapi_out=paths=source_relative:.",
+		"--go_out=paths=source_relative:" + a.ProtoClientGo(),
+		"--go-grpc_out=paths=source_relative:" + a.ProtoClientGo(),
+		"--go-mars-http_out=paths=source_relative:" + a.ProtoClientGo(),
+		"--go-mars-errors_out=paths=source_relative:" + a.ProtoClientGo(),
+		"--openapi_out=paths=source_relative:" + a.ProtoClientGo(),
 	}
 	input = append(input, inputExt...)
 	protoBytes, err := os.ReadFile(proto)
 	if err == nil && len(protoBytes) > 0 {
 		if ok, _ := regexp.Match(`\n[^/]*(import)\s+"validate/validate.proto"`, protoBytes); ok {
-			input = append(input, "--validate_out=lang=go,paths=source_relative:.")
+			input = append(input, "--validate_out=lang=go,paths=source_relative:"+a.ProtoClientGo())
 		}
 	}
 	input = append(input, proto)
@@ -200,7 +166,7 @@ func generate(proto string, args []string) error {
 	fd := exec.Command("protoc", input...)
 	fd.Stdout = os.Stdout
 	fd.Stderr = os.Stderr
-	fd.Dir = "."
+	fd.Dir = "" + a.ProtoClientGo()
 	if err := fd.Run(); err != nil {
 		return err
 	}

@@ -4,14 +4,13 @@ go 1.17
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.6
-	github.com/BurntSushi/toml v0.3.1
 	github.com/emicklei/proto v1.10.0
 	github.com/fatih/color v1.13.0
 	github.com/fengleng/mars v0.0.0-20221124152600-0a38125a6e99
 	github.com/pelletier/go-toml/v2 v2.0.6
 	github.com/spf13/cobra v1.4.0
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4
-	golang.org/x/text v0.4.0
+	golang.org/x/text v0.3.5
 )
 
 require (

@@ -33,6 +33,10 @@ func (a *App) ProtoCol() string {
 	return path.Join(a.Proto, "protocol")
 }
 
+func (a *App) ProtoClientGo() string {
+	return path.Join(a.Proto, "client", "go")
+}
+
 func (a *App) tryNewDir(dir string) {
 	to := dir
 	if _, err := os.Stat(to); !os.IsNotExist(err) {

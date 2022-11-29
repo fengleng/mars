@@ -4,6 +4,7 @@ import (
 	"github.com/fengleng/mars/cmd/mars/internal/app/app_base"
 	"github.com/fengleng/mars/cmd/mars/internal/app/new"
 	"github.com/fengleng/mars/cmd/mars/internal/app/service/add"
+	"github.com/fengleng/mars/cmd/mars/internal/app/service/client"
 	"github.com/spf13/cobra"
 	"os"
 )
@@ -19,6 +20,7 @@ var CmdApp = &cobra.Command{
 func init() {
 	CmdApp.AddCommand(add.CmdAppServiceAdd)
 	CmdApp.AddCommand(new.CmdAppNew)
+	CmdApp.AddCommand(client.CmdClient)
 }
 
 func init() {
