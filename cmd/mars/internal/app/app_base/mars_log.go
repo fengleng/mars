@@ -22,7 +22,7 @@ import (
 func initLog() (log.Logger,func()) {
 	logger := log.With(log.NewStdLogger(os.Stdout),
 		"ts", log.DefaultTimestamp,
-		"caller", log.DefaultCaller,
+		"caller", log.Caller(5),
 		"hostname", id,
 		"Instance.name", "test1",
 		"Instance.service", "d2",

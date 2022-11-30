@@ -6,7 +6,8 @@ import (
 	"path"
 )
 
-var appConfFile = `port: 3333
+var appConfFile = `port: :3333
+port: :beta
 etcd:
   - 127.0.0.1:2379
 `

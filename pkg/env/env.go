@@ -1,7 +1,7 @@
 package env
 
 const (
-	Beta    = "bate"
+	Beta    = "beta"
 	Staging = "Staging"
 	Master  = "master"
 )

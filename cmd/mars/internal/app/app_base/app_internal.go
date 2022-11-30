@@ -54,7 +54,7 @@ import (
 )
 
 func init()  {
-	value := conf.Conf.Value("port")
+	value := conf.SvcConf.Value("port")
 	if value==nil {
 		panic("invalid port!")
 	}
