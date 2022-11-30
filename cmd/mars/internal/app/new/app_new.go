@@ -96,7 +96,7 @@ func (a *AppNew) writeProto(p string, bytes []byte) {
 }
 
 func new(cmd *cobra.Command, args []string) {
-	a = AppNew{app_base.Instance}
+	a = AppNew{app_base.GetApp()}
 
 	if len(args) > 0 {
 		a.AppName = args[0]

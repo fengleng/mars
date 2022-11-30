@@ -3,8 +3,10 @@ package app
 import (
 	"github.com/fengleng/mars/cmd/mars/internal/app/app_base"
 	"github.com/fengleng/mars/cmd/mars/internal/app/new"
+	"github.com/fengleng/mars/cmd/mars/internal/app/service/GenAll"
 	"github.com/fengleng/mars/cmd/mars/internal/app/service/add"
 	"github.com/fengleng/mars/cmd/mars/internal/app/service/client"
+	"github.com/fengleng/mars/cmd/mars/internal/app/service/server"
 	"github.com/spf13/cobra"
 	"os"
 )
@@ -21,6 +23,8 @@ func init() {
 	CmdApp.AddCommand(add.CmdAppServiceAdd)
 	CmdApp.AddCommand(new.CmdAppNew)
 	CmdApp.AddCommand(client.CmdClient)
+	CmdApp.AddCommand(server.CmdServer)
+	CmdApp.AddCommand(GenAll.CmdGenAll)
 }
 
 func init() {

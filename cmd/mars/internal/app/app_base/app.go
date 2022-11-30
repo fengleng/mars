@@ -33,8 +33,49 @@ func (a *App) ProtoCol() string {
 	return path.Join(a.Proto, "protocol")
 }
 
+func (a *App) ServerDir2(s string) string {
+	return path.Join(s, "internal", "server")
+}
+
+func (a *App) ServiceDir2(s string) string {
+	return path.Join(s, "internal", "service")
+}
+
+func (a *App) ConfDir2(s string) string {
+	return path.Join(s, "internal", "conf")
+}
+
+func (a *App) DataDir2(s string) string {
+	return path.Join(s, "internal", "service")
+}
+
+func (a *App) ServerDir(s string) string {
+	return path.Join(a.AppDir, s, "internal", "server")
+}
+
+func (a *App) ServiceDir(s string) string {
+	return path.Join(a.AppDir, s, "internal", "service")
+}
+
+func (a *App) ConfDir(s string) string {
+	return path.Join(a.AppDir, s, "internal", "conf")
+}
+
+func (a *App) DataDir(s string) string {
+	return path.Join(a.AppDir, s, "internal", "service")
+}
+
+func GetApp() *App {
+	Instance.ReadFromToml()
+	return Instance
+}
+
 func (a *App) ProtoClientGo() string {
-	return path.Join(a.Proto, "client", "go")
+	return path.Join(a.AppDir, a.ProtoClientGoSuf())
+}
+
+func (a *App) ProtoClientGoSuf() string {
+	return path.Join("client", "go")
 }
 
 func (a *App) tryNewDir(dir string) {

@@ -1,4 +1,4 @@
 package mars
 
 // Release is the current mars version.
-const Release = "v2.5.0"
+const Release = "v1.0.0"

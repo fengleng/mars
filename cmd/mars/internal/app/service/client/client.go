@@ -21,7 +21,7 @@ var CmdClient = &cobra.Command{
 	Use:   "client",
 	Short: "Generate the proto client code",
 	Long:  "Generate the proto client code. Example: mars proto client helloworld.proto",
-	Run:   run,
+	Run:   Run,
 }
 
 var protoPath string
@@ -33,8 +33,8 @@ func init() {
 	CmdClient.Flags().StringVarP(&protoPath, "proto_path", "p", protoPath, "proto path")
 }
 
-func run(cmd *cobra.Command, args []string) {
-	a := app_base.Instance
+func Run(cmd *cobra.Command, args []string) {
+	a := app_base.GetApp()
 
 	protoColPath := a.ProtoCol()
 
@@ -123,18 +123,40 @@ func look(name ...string) error {
 
 func walk(dir string, args []string) error {
 	return filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
-		if ext := filepath.Ext(path); ext != ".proto" || strings.HasPrefix(path, "third_party") {
+		if ext := filepath.Ext(path); ext != ".proto" || strings.Contains(path, "third_party") {
 			return nil
 		}
 		return generate(path, args)
 	})
 }
 
+func getServiceClientDir(proto string) string {
+	pathList := strings.Split(proto, string(os.PathSeparator))
+
+	serviceProto := pathList[len(pathList)-1]
+
+	serviceDir := strings.TrimSuffix(serviceProto, ".proto")
+
+	a := app_base.GetApp()
+	clientGo := a.ProtoClientGo()
+	clientDir := path.Join(clientGo, serviceDir)
+	err := os.MkdirAll(clientDir, os.ModePerm)
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
+	}
+	return clientDir
+
+}
+
 // generate is used to execute the generate command for the specified proto file
 func generate(proto string, args []string) error {
-	a := app_base.Instance
+	a := app_base.GetApp()
+
+	clientDir := getServiceClientDir(proto)
+
 	input := []string{
-		"--proto_path=" + a.ProtoClientGo(),
+		"--proto_path=" + clientDir,
 		"--proto_path=" + a.ProtoCol(),
 		"--proto_path=" + filepath.Join(a.ProtoCol(), "third_party"),
 	}
@@ -144,17 +166,17 @@ func generate(proto string, args []string) error {
 	inputExt := []string{
 		"--proto_path=" + base.MarsMod(),
 		"--proto_path=" + filepath.Join(base.MarsMod(), "third_party"),
-		"--go_out=paths=source_relative:" + a.ProtoClientGo(),
-		"--go-grpc_out=paths=source_relative:" + a.ProtoClientGo(),
-		"--go-mars-http_out=paths=source_relative:" + a.ProtoClientGo(),
-		"--go-mars-errors_out=paths=source_relative:" + a.ProtoClientGo(),
-		"--openapi_out=paths=source_relative:" + a.ProtoClientGo(),
+		"--go_out=paths=source_relative:" + clientDir,
+		"--go-grpc_out=paths=source_relative:" + clientDir,
+		"--go-mars-http_out=paths=source_relative:" + clientDir,
+		"--go-mars-errors_out=paths=source_relative:" + clientDir,
+		"--openapi_out=paths=source_relative:" + clientDir,
 	}
 	input = append(input, inputExt...)
 	protoBytes, err := os.ReadFile(proto)
 	if err == nil && len(protoBytes) > 0 {
 		if ok, _ := regexp.Match(`\n[^/]*(import)\s+"validate/validate.proto"`, protoBytes); ok {
-			input = append(input, "--validate_out=lang=go,paths=source_relative:"+a.ProtoClientGo())
+			input = append(input, "--validate_out=lang=go,paths=source_relative:"+clientDir)
 		}
 	}
 	input = append(input, proto)
@@ -166,7 +188,7 @@ func generate(proto string, args []string) error {
 	fd := exec.Command("protoc", input...)
 	fd.Stdout = os.Stdout
 	fd.Stderr = os.Stderr
-	fd.Dir = "" + a.ProtoClientGo()
+	fd.Dir = "."
 	if err := fd.Run(); err != nil {
 		return err
 	}
