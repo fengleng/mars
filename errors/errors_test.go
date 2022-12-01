@@ -80,13 +80,13 @@ func TestIs(t *testing.T) {
 	}{
 		{
 			name: "true",
-			e:    New(404, "test", ""),
-			err:  New(http.StatusNotFound, "test", ""),
+			e:    New(404, "test"),
+			err:  New(http.StatusNotFound, "test"),
 			want: true,
 		},
 		{
 			name: "false",
-			e:    New(0, "test", ""),
+			e:    New(0, "test"),
 			err:  errors.New("test"),
 			want: false,
 		},

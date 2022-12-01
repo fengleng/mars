@@ -54,6 +54,12 @@ func (e *Error) WithMetadata(md map[string]string) *Error {
 	return err
 }
 
+func (e *Error) WithMessage(message string) *Error {
+	err := Clone(e)
+	err.Message = message
+	return err
+}
+
 // GRPCStatus returns the Status represented by se.
 func (e *Error) GRPCStatus() *status.Status {
 	s, _ := status.New(httpstatus.ToGRPCCode(int(e.Code)), e.Message).
@@ -65,24 +71,23 @@ func (e *Error) GRPCStatus() *status.Status {
 }
 
 // New returns an error object for the code, message.
-func New(code int, reason, message string) *Error {
+func New(code int, reason string) *Error {
 	return &Error{
 		Status: Status{
-			Code:    int32(code),
-			Message: message,
-			Reason:  reason,
+			Code:   int32(code),
+			Reason: reason,
 		},
 	}
 }
 
 // Newf New(code fmt.Sprintf(format, a...))
 func Newf(code int, reason, format string, a ...interface{}) *Error {
-	return New(code, reason, fmt.Sprintf(format, a...))
+	return New(code, reason).WithMessage(fmt.Sprintf(format, a...))
 }
 
 // Errorf returns an error object for the code, message and error info.
 func Errorf(code int, reason, format string, a ...interface{}) error {
-	return New(code, reason, fmt.Sprintf(format, a...))
+	return Newf(code, reason, format, a...)
 }
 
 // Code returns the http code for an error.
@@ -134,13 +139,12 @@ func FromError(err error) *Error {
 	}
 	gs, ok := status.FromError(err)
 	if !ok {
-		return New(UnknownCode, UnknownReason, err.Error())
+		return New(UnknownCode, UnknownReason).WithMessage(err.Error())
 	}
 	ret := New(
 		httpstatus.FromGRPCCode(gs.Code()),
 		UnknownReason,
-		gs.Message(),
-	)
+	).WithMessage(gs.Message())
 	for _, detail := range gs.Details() {
 		switch d := detail.(type) {
 		case *errdetails.ErrorInfo:
