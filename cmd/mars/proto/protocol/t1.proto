@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package t1;
+
+option go_package = "github.com/fengleng/dddd/t1";
+option java_multiple_files = true;
+option java_package = "t1";
+
+service T1 {
+	rpc CreateT1 (CreateT1Req) returns (CreateT1Rsp);
+	rpc UpdateT1 (UpdateT1Req) returns (UpdateT1Rsp);
+	rpc DeleteT1 (DeleteT1Req) returns (DeleteT1Rsp);
+	rpc GetT1 (GetT1Req) returns (GetT1Rsp);
+	rpc ListT1 (stream ListT1Req) returns (ListT1Rsp);
+}
+
+message CreateT1Req {}
+message CreateT1Rsp {}
+
+message UpdateT1Req {}
+message UpdateT1Rsp {}
+
+message DeleteT1Req {}
+message DeleteT1Rsp {}
+
+message GetT1Req {}
+message GetT1Rsp {}
+
+message ListT1Req {}
+message ListT1Rsp {}

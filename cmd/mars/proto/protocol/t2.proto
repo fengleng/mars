@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package t2;
+
+import "google/api/http.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/descriptor.proto";
+
+import "validate/validate.proto";
+
+import "mars/interceptor.proto";
+
+option go_package = "github.com/fengleng/dddd/t2";
+option java_multiple_files = true;
+option java_package = "t2";
+
+service T2 {
+	option(mars.service_handler)={
+
+	};
+
+	option(google.protobuf.ServiceOptions.deprecated)=true;
+
+	rpc CreateT2 (CreateT2Req) returns (CreateT2Rsp);
+	rpc UpdateT2 (UpdateT2Req) returns (UpdateT2Rsp);
+	rpc DeleteT2 (DeleteT2Req) returns (DeleteT2Rsp);
+	rpc GetT2 (GetT2Req) returns (GetT2Rsp){
+
+//		option(google.api.http)={
+//		post:"T2/"
+//		};
+		option(google.protobuf.MethodOptions.deprecated)=true;
+		option(mars.method_handler) = {
+			whitelist : "ip_whitelist",
+			logger: true,
+		};
+	};
+	rpc ListT2 (ListT2Req) returns (ListT2Rsp);
+}
+
+message CreateT2Req {
+	string f1 = 1 [deprecated=true,(validate.rules).string.address=true];
+
+}
+message CreateT2Rsp {}
+
+message UpdateT2Req {}
+message UpdateT2Rsp {}
+
+message DeleteT2Req {}
+message DeleteT2Rsp {}
+
+message GetT2Req {}
+message GetT2Rsp {}
+
+message ListT2Req {}
+message ListT2Rsp {}
+
+message Person {
+	uint64 id = 1 [(validate.rules).uint64.gt = 999];
+
+	string email = 2 [(validate.rules).string.email = true];
+
+	string name = 3 [(validate.rules).string = {
+		pattern:   "^[^[0-9]A-Za-z]+( [^[0-9]A-Za-z]+)*$",
+		max_bytes: 256,
+	}];
+
+	Location home = 4 [(validate.rules).message.required = true];
+
+	message Location {
+		double lat = 1 [(validate.rules).double = {gte: -90,  lte: 90}];
+		double lng = 2 [(validate.rules).double = {gte: -180, lte: 180}];
+	}
+}
