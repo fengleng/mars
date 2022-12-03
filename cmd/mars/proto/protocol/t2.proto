@@ -2,38 +2,32 @@ syntax = "proto3";
 
 package t2;
 
-import "google/api/http.proto";
 import "google/api/annotations.proto";
-import "google/protobuf/descriptor.proto";
+
 
 import "validate/validate.proto";
 
-import "mars/interceptor.proto";
 
 option go_package = "github.com/fengleng/dddd/t2";
 option java_multiple_files = true;
 option java_package = "t2";
 
 service T2 {
-	option(mars.service_handler)={
-
+	rpc CreateT2 (CreateT2Req) returns (CreateT2Rsp){
+//
+//		option(google.api.http)={
+//			post:"T2/crate",
+//			body:"vvvvvv",
+//		};
 	};
-
-	option(google.protobuf.ServiceOptions.deprecated)=true;
-
-	rpc CreateT2 (CreateT2Req) returns (CreateT2Rsp);
 	rpc UpdateT2 (UpdateT2Req) returns (UpdateT2Rsp);
 	rpc DeleteT2 (DeleteT2Req) returns (DeleteT2Rsp);
 	rpc GetT2 (GetT2Req) returns (GetT2Rsp){
 
 //		option(google.api.http)={
-//		post:"T2/"
+//			post:"T2/hahah",
+//			body:"*",
 //		};
-		option(google.protobuf.MethodOptions.deprecated)=true;
-		option(mars.method_handler) = {
-			whitelist : "ip_whitelist",
-			logger: true,
-		};
 	};
 	rpc ListT2 (ListT2Req) returns (ListT2Rsp);
 }

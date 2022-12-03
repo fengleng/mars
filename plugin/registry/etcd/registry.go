@@ -26,6 +26,10 @@ type options struct {
 	maxRetry  int
 }
 
+const (
+	DefaultNameSpace = "/microservices"
+)
+
 // Context with registry context.
 func Context(ctx context.Context) Option {
 	return func(o *options) { o.ctx = ctx }
@@ -57,7 +61,7 @@ type Registry struct {
 func New(client *clientv3.Client, opts ...Option) (r *Registry) {
 	op := &options{
 		ctx:       context.Background(),
-		namespace: "/microservices",
+		namespace: DefaultNameSpace,
 		ttl:       time.Second * 15,
 		maxRetry:  5,
 	}

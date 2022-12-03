@@ -74,7 +74,7 @@ func init() {
 		panic(err)
 	}
 
-	source, err := etcd.New(client,etcd.WithPath(configPath))
+	source, err := etcd.New(client,etcd.WithPath(configPath),etcd.WithPrefix(true))
 	if err != nil {
 		log.Errorf("err: %s", err)
 		panic(err)

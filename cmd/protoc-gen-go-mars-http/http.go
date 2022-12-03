@@ -198,11 +198,12 @@ func buildMethodDesc(g *protogen.GeneratedFile, m *protogen.Method, method, path
 		}
 	}
 	return &methodDesc{
+		HasBody:      true,
 		Name:         m.GoName,
 		OriginalName: string(m.Desc.Name()),
 		Num:          methodSets[m.GoName],
 		Request:      g.QualifiedGoIdent(m.Input.GoIdent),
-		Reply:        g.QualifiedGoIdent(m.Output.GoIdent),
+		Rsp:          g.QualifiedGoIdent(m.Output.GoIdent),
 		Path:         path,
 		Method:       method,
 		HasVars:      len(vars) > 0,

@@ -7,7 +7,7 @@ import (
 )
 
 var appConfFile = `port: :3333
-port: :beta
+env: :beta
 etcd:
   - 127.0.0.1:2379
 `

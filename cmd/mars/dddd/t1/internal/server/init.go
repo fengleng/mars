@@ -9,7 +9,8 @@ import (
 
 	"github.com/fengleng/dddd/client/go/t1"
 
-
+	"github.com/fengleng/dddd/client/go/t1"
+	"github.com/fengleng/dddd/t1/internal/service"
 )
 
 func init() {
@@ -34,6 +35,10 @@ func init() {
 	}()
 }
 
+func init() {
+	t1.RegisterT1Server(gRPCServer, service.NewT1Service())
+	t1.RegisterT1HTTPServer(httpServer, service.NewT1Service())
+}
 func init() {
 	t1.RegisterT1Server(gRPCServer, service.NewT1Service())
 	t1.RegisterT1HTTPServer(httpServer, service.NewT1Service())

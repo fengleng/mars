@@ -24,9 +24,9 @@ func initLog() (log.Logger,func()) {
 		"ts", log.DefaultTimestamp,
 		"caller", log.Caller(5),
 		"hostname", id,
-		"Instance.name", "test1",
-		"Instance.service", "d2",
-		"Instance.service.version", Version,
+		"app.name", "test1",
+		"app.service", "d2",
+		"app.service.version", Version,
 		"trace.id", tracing.TraceID(),
 		"span.id", tracing.SpanID(),
 	)

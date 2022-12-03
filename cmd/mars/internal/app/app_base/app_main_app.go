@@ -39,7 +39,7 @@ func newApp() (*mars.App,func()) {
 }`
 
 func (a *App) InitAppFile() {
-	to := path.Join(a.AppDir, a.ServiceName, "cmd", "Instance.go")
+	to := path.Join(a.AppDir, a.ServiceName, "cmd", "app.go")
 	_, err := os.Stat(to)
 	if !os.IsNotExist(err) {
 		return

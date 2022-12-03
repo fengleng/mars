@@ -16,7 +16,7 @@ const Operation{{$svrType}}{{.OriginalName}} = "/{{$svrName}}/{{.OriginalName}}"
 
 type {{.ServiceType}}HTTPServer interface {
 {{- range .MethodSets}}
-	{{.Name}}(context.Context, *{{.Request}}) (*{{.Reply}}, error)
+	{{.Name}}(context.Context, *{{.Request}}) (*{{.Rsp}}, error)
 {{- end}}
 }
 
@@ -59,7 +59,7 @@ func _{{$svrType}}_{{.Name}}{{.Num}}_HTTP_Handler(srv {{$svrType}}HTTPServer) fu
 		if err != nil {
 			return err
 		}
-		reply := out.(*{{.Reply}})
+		reply := out.(*{{.Rsp}})
 		return ctx.Result(200, reply{{.ResponseBody}})
 	}
 }
@@ -67,7 +67,7 @@ func _{{$svrType}}_{{.Name}}{{.Num}}_HTTP_Handler(srv {{$svrType}}HTTPServer) fu
 
 type {{.ServiceType}}HTTPClient interface {
 {{- range .MethodSets}}
-	{{.Name}}(ctx context.Context, req *{{.Request}}, opts ...http.CallOption) (rsp *{{.Reply}}, err error) 
+	{{.Name}}(ctx context.Context, req *{{.Request}}, opts ...http.CallOption) (rsp *{{.Rsp}}, err error) 
 {{- end}}
 }
 	
@@ -80,8 +80,8 @@ func New{{.ServiceType}}HTTPClient (client *http.Client) {{.ServiceType}}HTTPCli
 }
 
 {{range .MethodSets}}
-func (c *{{$svrType}}HTTPClientImpl) {{.Name}}(ctx context.Context, in *{{.Request}}, opts ...http.CallOption) (*{{.Reply}}, error) {
-	var out {{.Reply}}
+func (c *{{$svrType}}HTTPClientImpl) {{.Name}}(ctx context.Context, in *{{.Request}}, opts ...http.CallOption) (*{{.Rsp}}, error) {
+	var out {{.Rsp}}
 	pattern := "{{.Path}}"
 	path := binding.EncodeURL(pattern, in, {{not .HasBody}})
 	opts = append(opts, http.Operation(Operation{{$svrType}}{{.OriginalName}}))
@@ -113,7 +113,7 @@ type methodDesc struct {
 	OriginalName string // The parsed original name
 	Num          int
 	Request      string
-	Reply        string
+	Rsp          string
 	// http_rule
 	Path         string
 	Method       string
