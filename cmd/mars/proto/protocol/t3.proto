@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package t3;
+
+option go_package = "github.com/fengleng/dddd/t3";
+option java_multiple_files = true;
+option java_package = "t3";
+
+service T3 {
+	rpc CreateT3 (CreateT3Req) returns (CreateT3Rsp);
+	rpc UpdateT3 (UpdateT3Req) returns (UpdateT3Rsp);
+	rpc DeleteT3 (DeleteT3Req) returns (DeleteT3Rsp);
+	rpc GetT3 (GetT3Req) returns (GetT3Rsp);
+	rpc ListT3 (ListT3Req) returns (ListT3Rsp);
+}
+
+message CreateT3Req {}
+message CreateT3Rsp {}
+
+message UpdateT3Req {}
+message UpdateT3Rsp {}
+
+message DeleteT3Req {}
+message DeleteT3Rsp {}
+
+message GetT3Req {}
+message GetT3Rsp {}
+
+message ListT3Req {}
+message ListT3Rsp {}
