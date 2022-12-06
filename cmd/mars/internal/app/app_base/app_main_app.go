@@ -29,6 +29,7 @@ func newApp() (*mars.App,func()) {
 		mars.Version(Version),
 		mars.Metadata(map[string]string{}),
 		mars.Logger(logger),
+		mars.Registrar(register),
 		mars.Server(
 			grpcServer,
 			httpServer,

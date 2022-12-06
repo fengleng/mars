@@ -13,7 +13,7 @@ import (
 )
 
 // ErrNotAllowed is request failed due to circuit breaker triggered.
-var ErrNotAllowed = errors.New(503, "CIRCUITBREAKER", "request failed due to circuit breaker triggered")
+var ErrNotAllowed = errors.New(503, "CIRCUITBREAKER").WithMessage("request failed due to circuit breaker triggered")
 
 // Option is circuit breaker option.
 type Option func(*options)

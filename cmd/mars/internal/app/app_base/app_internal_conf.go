@@ -43,11 +43,37 @@ func init() {
 	)
 
 	err := SvcConf.Load()
-	if err !=nil {
-		log.Errorf("err: %s",err)
+	if err != nil {
+		log.Errorf("err: %s", err)
 		panic(err)
 	}
 
+	var endPointList = GetEtcdEndpointList()
+
+	client, err := clientV3.New(clientV3.Config{
+		Endpoints:            endPointList,
+		DialTimeout:          3 * time.Second,
+		DialKeepAliveTimeout: 3 * time.Second,
+	})
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
+	}
+
+	source, err := etcd.New(client, etcd.WithPath(configPath), etcd.WithPrefix(true))
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
+	}
+	Conf = config.New(config.WithSource(source))
+	err = Conf.Load()
+	if err != nil {
+		log.Errorf("err: %s", err)
+		panic(err)
+	}
+}
+
+func GetEtcdEndpointList() []string {
 	values, err := SvcConf.Value("etcd").Slice()
 	if err != nil {
 		log.Errorf("err: %s", err)
@@ -64,27 +90,7 @@ func init() {
 		endPointList = append(endPointList, s)
 	}
 
-	client, err := clientV3.New(clientV3.Config{
-		Endpoints:            endPointList,
-		DialTimeout:          3 * time.Second,
-		DialKeepAliveTimeout: 3 * time.Second,
-	})
-	if err != nil {
-		log.Errorf("err: %s", err)
-		panic(err)
-	}
-
-	source, err := etcd.New(client,etcd.WithPath(configPath),etcd.WithPrefix(true))
-	if err != nil {
-		log.Errorf("err: %s", err)
-		panic(err)
-	}
-	Conf = config.New(config.WithSource(source))
-	err = Conf.Load()
-	if err !=nil {
-		log.Errorf("err: %s",err)
-		panic(err)
-	}
+	return endPointList
 }
 `
 

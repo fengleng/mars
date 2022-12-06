@@ -6,11 +6,12 @@ import (
 	"github.com/fengleng/mars/plugin/registry/etcd"
 	"github.com/fengleng/mars/registry"
 	clientv3 "go.etcd.io/etcd/client/v3"
+	"path"
 	"time"
 )
 
 var (
-	Register registry.Registrar
+	register registry.Registrar
 )
 
 func init() {
@@ -26,5 +27,5 @@ func init() {
 		log.Errorf("err: %s", err)
 		panic(err)
 	}
-	Register = etcd.New(client)
+	register = etcd.New(client, etcd.Namespace(path.Join(etcd.DefaultNameSpace, ServiceName)))
 }

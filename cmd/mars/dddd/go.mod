@@ -3,7 +3,7 @@ module github.com/fengleng/dddd
 go 1.17
 
 require (
-	github.com/fengleng/mars v0.0.0-20221130165137-856dd36b3f79
+	github.com/fengleng/mars v0.0.0-20221203172144-b58c8b4842c2
 	github.com/google/wire v0.5.0
 	go.etcd.io/etcd/client/v3 v3.5.6
 )
@@ -25,9 +25,9 @@ require (
 	go.etcd.io/etcd/client/pkg/v3 v3.5.6 // indirect
 	go.opentelemetry.io/otel v1.7.0 // indirect
 	go.opentelemetry.io/otel/trace v1.7.0 // indirect
-	go.uber.org/atomic v1.7.0 // indirect
+	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
-	go.uber.org/zap v1.17.0 // indirect
+	go.uber.org/zap v1.21.0 // indirect
 	golang.org/x/net v0.0.0-20221014081412-f15817d10f9b // indirect
 	golang.org/x/sync v0.1.0 // indirect
 	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect

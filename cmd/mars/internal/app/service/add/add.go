@@ -62,6 +62,7 @@ func Add(cmd *cobra.Command, args []string) {
 	a.InitInternal()
 	a.InitAppMain()
 	a.MarsLog()
+	a.InitAppRegister()
 
 	//input := args[0]
 	//n := strings.LastIndex(input, "/")
