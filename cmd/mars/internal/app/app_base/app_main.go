@@ -14,6 +14,7 @@ var appMain = `package main
 import (
 	"github.com/fengleng/mars/log"
 	"os"
+	"github.com/rs/xid"
 )
 
 var (
@@ -23,7 +24,8 @@ var (
 	// ServiceName is the name of the compiled software.
 	ServiceName = "{{.ServiceName}}"
 
-	id, _ = os.Hostname()
+	hostname, _ = os.Hostname()
+	id = xid.New().String()
 )
 
 func main() {

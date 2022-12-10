@@ -13,6 +13,7 @@ var register = `package main
 
 import (
 	"{{.GoMod}}/{{.ServiceName}}/internal/conf"
+	"{{.GoMod}}/pkg/consts"
 	"github.com/fengleng/mars/log"
 	"github.com/fengleng/mars/plugin/registry/etcd"
 	"github.com/fengleng/mars/registry"
@@ -38,7 +39,7 @@ func init() {
 		log.Errorf("err: %s", err)
 		panic(err)
 	}
-	register = etcd.New(client,etcd.Namespace(path.Join(etcd.DefaultNameSpace,ServiceName)))
+	register = etcd.New(client,etcd.Namespace(path.Join(etcd.DefaultNameSpace,consts.AppName,ServiceName)))
 }`
 
 func (a *App) InitAppRegister() {

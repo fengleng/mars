@@ -24,9 +24,8 @@ func TestRegistry_Register(t *testing.T) {
 		NotLoadCacheAtStart: true,
 		LogDir:              "/tmp/nacos/log",
 		CacheDir:            "/tmp/nacos/cache",
-		RotateTime:          "1h",
-		MaxAge:              3,
-		LogLevel:            "debug",
+
+		LogLevel: "debug",
 	}
 
 	// a more graceful way to create naming client
@@ -241,9 +240,9 @@ func TestRegistry_Deregister(t *testing.T) {
 					NotLoadCacheAtStart: true,
 					LogDir:              "/tmp/nacos/log",
 					CacheDir:            "/tmp/nacos/cache",
-					RotateTime:          "1h",
-					MaxAge:              3,
-					LogLevel:            "debug",
+					//RotateTime:          "1h",
+					//MaxAge:              3,
+					LogLevel: "debug",
 				}
 
 				// a more graceful way to create naming client
@@ -302,9 +301,9 @@ func TestRegistry_Deregister(t *testing.T) {
 				NotLoadCacheAtStart: true,
 				LogDir:              "/tmp/nacos/log",
 				CacheDir:            "/tmp/nacos/cache",
-				RotateTime:          "1h",
-				MaxAge:              3,
-				LogLevel:            "debug",
+				//RotateTime:          "1h",
+				//MaxAge:              3,
+				LogLevel: "debug",
 			}
 
 			// a more graceful way to create naming client
@@ -339,9 +338,8 @@ func TestRegistry_GetService(t *testing.T) {
 		NotLoadCacheAtStart: true,
 		LogDir:              "/tmp/nacos/log",
 		CacheDir:            "/tmp/nacos/cache",
-		RotateTime:          "1h",
-		MaxAge:              3,
-		LogLevel:            "debug",
+
+		LogLevel: "debug",
 	}
 
 	// a more graceful way to create naming client
@@ -455,9 +453,8 @@ func TestRegistry_Watch(t *testing.T) {
 		NotLoadCacheAtStart: true,
 		LogDir:              "/tmp/nacos/log",
 		CacheDir:            "/tmp/nacos/cache",
-		RotateTime:          "1h",
-		MaxAge:              3,
-		LogLevel:            "debug",
+
+		LogLevel: "debug",
 	}
 
 	// a more graceful way to create naming client

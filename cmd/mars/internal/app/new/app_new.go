@@ -147,6 +147,9 @@ func new(cmd *cobra.Command, args []string) {
 			a.Done <- err
 			return
 		}
+
+		a.InitConst()
+
 		modulePath, err := base.ModulePath("./go.mod")
 		if err != nil {
 			log.Errorf("err: %s", err)

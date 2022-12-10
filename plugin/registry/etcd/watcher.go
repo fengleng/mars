@@ -69,9 +69,9 @@ func (w *watcher) getInstance() ([]*registry.ServiceInstance, error) {
 		if err != nil {
 			return nil, err
 		}
-		if si.Name != w.serviceName {
-			continue
-		}
+		//if si.Name != w.serviceName {
+		//	continue
+		//}
 		items = append(items, si)
 	}
 	return items, nil
