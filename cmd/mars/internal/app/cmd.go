@@ -45,5 +45,5 @@ func init() {
 	CmdApp.Flags().StringVarP(&app_base.Instance.GitUrl, "git-url", "g", app_base.Instance.GitUrl, "git url")
 	CmdApp.Flags().StringVarP(&app_base.Instance.Proto, "proto", "p", app_base.Instance.Proto, "proto dir")
 	//CmdApp.Flags().StringVarP(&Instance.Backend, "backend", "b", Instance.Backend, "Backend dir")
-	CmdApp.Flags().StringVar(&app_base.Instance.AppName, "Instance", "", "Instance name")
+	CmdApp.Flags().StringVar(&app_base.Instance.AppName, "app", "", "app name")
 }

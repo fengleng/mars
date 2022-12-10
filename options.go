@@ -18,6 +18,7 @@ type Option func(o *options)
 type options struct {
 	id        string
 	name      string
+	hostName  string
 	version   string
 	metadata  map[string]string
 	endpoints []*url.URL
@@ -35,6 +36,11 @@ type options struct {
 // ID with service id.
 func ID(id string) Option {
 	return func(o *options) { o.id = id }
+}
+
+// HostName with hostName.
+func HostName(hostName string) Option {
+	return func(o *options) { o.hostName = hostName }
 }
 
 // Name with service name.

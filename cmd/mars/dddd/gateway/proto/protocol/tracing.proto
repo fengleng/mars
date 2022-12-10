@@ -1,0 +1,18 @@
+syntax = "proto3";
+package gateway;
+
+option go_package = "github.com/fengleng/gateway/proto/client";
+option java_multiple_files = true;
+option java_package = "gateway";
+
+import "google/protobuf/duration.proto";
+
+// Tracing middleware config.
+message Tracing {
+	// report endpoint url
+	string http_endpoint = 1;
+	// sample ratio
+	optional float sample_ratio = 2;
+	// report timeout
+	google.protobuf.Duration timeout = 4;
+}
