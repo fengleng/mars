@@ -35,7 +35,8 @@ type ServiceInstance struct {
 	ID       string `json:"id"`
 	HostName string `json:"host_name"`
 	// Name is the service name as registered.
-	Name string `json:"name"`
+	Name   string `json:"name"`
+	UpTime int64  `json:"up_time"`
 	// Version is the version of the compiled.
 	Version string `json:"version"`
 	// Metadata is the kv pair metadata associated with the service instance.

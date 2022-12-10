@@ -169,6 +169,7 @@ func (a *App) buildInstance() (*registry.ServiceInstance, error) {
 		Version:   a.opts.version,
 		Metadata:  a.opts.metadata,
 		Endpoints: endpoints,
+		UpTime:    time.Now().UnixMilli(),
 	}, nil
 }
 
