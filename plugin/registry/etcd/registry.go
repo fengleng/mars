@@ -120,9 +120,9 @@ func (r *Registry) GetService(ctx context.Context, name string) ([]*registry.Ser
 		if err != nil {
 			return nil, err
 		}
-		if si.Name != name {
-			continue
-		}
+		//if si.Name != name {
+		//	continue
+		//}
 		items = append(items, si)
 	}
 	return items, nil
